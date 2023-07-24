@@ -10,6 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing
     /// <summary>
     /// An abstraction of a license.
     /// </summary>
+    /// <seealso cref="LicensePrincipal"/>
     public interface ILicense
     {
         /// <summary>

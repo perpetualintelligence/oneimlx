@@ -5,26 +5,34 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
+using System.Text;
+
 namespace PerpetualIntelligence.OneImlx.Licensing
 {
     /// <summary>
-    /// Defines a license key.
+    /// Represents a license key.
     /// </summary>
-    /// <typeparam name="TKey">The type of the license key.</typeparam>
-    public sealed class LicenseKey<TKey>
+    public sealed class LicenseKey
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="LicenseKey{TKey}"/>.
+        /// Initializes a new instance of <see cref="LicenseKey"/>.
         /// </summary>
         /// <param name="key">The license key.</param>
-        public LicenseKey(TKey key)
+        /// <param name="encoding">The license key encoding.</param>
+        public LicenseKey(byte[] key, Encoding encoding)
         {
             Key = key;
+            Encoding = encoding;
         }
 
         /// <summary>
         /// The license key.
         /// </summary>
-        public TKey Key { get; }
+        public byte[] Key { get; }
+
+        /// <summary>
+        /// The license key encoding.
+        /// </summary>
+        public Encoding Encoding { get; }
     }
 }
