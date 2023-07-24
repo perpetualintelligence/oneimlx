@@ -8,6 +8,10 @@
             The most flexible cross-platform framework for IAM and licensing.
         </Description>
         <PackageTags>oneimlx</PackageTags>
-    </PropertyGroup>   
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Text.Json" Version="7.0.3" />
+    </ItemGroup>   
     
 </Project>
