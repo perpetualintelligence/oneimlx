@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace PerpetualIntelligence.OneImlx.Licensing
 {
@@ -17,22 +17,15 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         /// <summary>
         /// Initializes a new instance of <see cref="LicenseKey"/>.
         /// </summary>
-        /// <param name="key">The license key.</param>
-        /// <param name="encoding">The license key encoding.</param>
-        public LicenseKey(byte[] key, Encoding encoding)
+        /// <param name="securityToken">The security token associated with this license key.</param>
+        public LicenseKey(SecurityToken securityToken)
         {
-            Key = key;
-            Encoding = encoding;
+            SecurityToken = securityToken;
         }
 
         /// <summary>
-        /// The license key.
+        /// The security token associated with this license key.
         /// </summary>
-        public byte[] Key { get; }
-
-        /// <summary>
-        /// The license key encoding.
-        /// </summary>
-        public Encoding Encoding { get; }
+        public SecurityToken SecurityToken { get; set; }
     }
 }
