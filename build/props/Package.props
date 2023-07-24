@@ -29,6 +29,7 @@
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
         <RootNamespace>PerpetualIntelligence.$(MSBuildProjectName)</RootNamespace>
+        <AssemblyName>PerpetualIntelligence.$(MSBuildProjectName)</AssemblyName>
 
         <!--
             AzureDevOps and CI/CD pipelines with versioning built-in. So we utilize msbuild's Condition attribute.
