@@ -5,9 +5,9 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{5348502E-8B8A-48FB-B735-251DF050C742}"
 	ProjectSection(SolutionItems) = preProject
-		build\Package.props = build\Package.props
-		build\PackageLicense.props = build\PackageLicense.props
-		build\Test.props = build\Test.props
+		build\props\Package.props = build\props\Package.props
+		build\props\PackageLicense.props = build\props\PackageLicense.props
+		build\props\Test.props = build\props\Test.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4C83B255-59A1-4BC5-8C40-E79CD843F38B}"
@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{57ADE862-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Licensing", "src\OneImlx.Licensing\OneImlx.Licensing.csproj", "{6AC84829-8698-4280-97BC-5122A9066A20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneImlx.Licensing.Tests", "test\OneImlx.Licensing.Tests\OneImlx.Licensing.Tests.csproj", "{E4451FC7-A241-405C-ABE4-D8BC0B47DD9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Licensing.Tests", "test\OneImlx.Licensing.Tests\OneImlx.Licensing.Tests.csproj", "{E4451FC7-A241-405C-ABE4-D8BC0B47DD9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,6 +8,6 @@
             The most flexible cross-platform framework for IAM and licesing.
         </Description>
         <PackageTags>oneimlx</PackageTags>
-    </PropertyGroup>
+    </PropertyGroup>   
     
 </Project>
