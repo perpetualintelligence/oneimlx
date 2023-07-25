@@ -8,7 +8,7 @@
 namespace PerpetualIntelligence.OneImlx.Configuration.Licensing
 {
     /// <summary>
-    /// AN abstraction of licensing configuration options.
+    /// An abstraction of licensing configuration options.
     /// </summary>
     public sealed class LicensingOptions
     {
