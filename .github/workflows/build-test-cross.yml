@@ -1,0 +1,94 @@
+#    Copyright (c) 2023. Perpetual Intelligence L.L.C. All Rights Reserved.
+#
+#    For license, terms, and data policies, go to:
+#    https://terms.perpetualintelligence.com
+
+# This pipeline builds and tests the protocol projects on all supported platforms. It does not publish any package.
+name: build-test-cross
+
+# Triggers
+on:  
+  workflow_dispatch:
+
+# Environment Variables
+env:
+  PI_CI_REFERENCE: local
+
+jobs:
+  ubunto:   
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+
+    # Checkout
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Setup .Net with global.json
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      
+    # Restore dependencies
+    - name: Restore
+      run: dotnet restore
+      
+    # Build
+    - name: Build
+      run: dotnet build --no-restore
+      
+    # Test
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      
+  macos:   
+    runs-on: macos-latest
+    timeout-minutes: 15
+      
+    steps:
+
+    # Checkout
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Setup .Net with global.json
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      
+    # Restore dependencies
+    - name: Restore
+      run: dotnet restore
+      
+    # Build
+    - name: Build
+      run: dotnet build --no-restore
+      
+    # Test
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      
+  windows:   
+    runs-on: windows-latest
+    timeout-minutes: 15
+    
+    steps:
+    
+    # Checkout
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Setup .Net with global.json
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      
+    # Restore dependencies
+    - name: Restore
+      run: dotnet restore
+      
+    # Build
+    - name: Build
+      run: dotnet build --no-restore
+      
+    # Test
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
