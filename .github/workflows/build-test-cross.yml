@@ -13,6 +13,8 @@ on:
 # Environment Variables
 env:
   PI_CI_REFERENCE: local
+  PI_GITHUB_USERNAME_ENV: ${{ secrets.PI_GITHUB_USERNAME }}
+  PI_GITHUB_PAT_ENV: ${{ secrets.PI_GITHUB_PAT }}
 
 jobs:
   ubunto:   
