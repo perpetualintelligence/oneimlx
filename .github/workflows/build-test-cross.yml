@@ -10,16 +10,16 @@ name: build-test-cross
 on:  
   workflow_dispatch:
 
-# Environment Variables
-env:
-  PI_CI_REFERENCE: local
-  PI_GITHUB_USERNAME_ENV: ${{ secrets.PI_GITHUB_USERNAME }}
-  PI_GITHUB_PAT_ENV: ${{ secrets.PI_GITHUB_PAT }}
-
 jobs:
   ubunto:   
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
+    # Environment Variables
+    env:
+      PI_CI_REFERENCE: local
+      PI_GITHUB_USERNAME_ENV: ${{ secrets.PI_GITHUB_USERNAME }}
+      PI_GITHUB_PAT_ENV: ${{ secrets.PI_GITHUB_PAT }}
     
     steps:
 
@@ -46,6 +46,12 @@ jobs:
   macos:   
     runs-on: macos-latest
     timeout-minutes: 15
+
+    # Environment Variables
+    env:
+      PI_CI_REFERENCE: local
+      PI_GITHUB_USERNAME_ENV: ${{ secrets.PI_GITHUB_USERNAME }}
+      PI_GITHUB_PAT_ENV: ${{ secrets.PI_GITHUB_PAT }}
       
     steps:
 
@@ -73,6 +79,12 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 15
     
+    # Environment Variables
+    env:
+      PI_CI_REFERENCE: local
+      PI_GITHUB_USERNAME_ENV: ${{ secrets.PI_GITHUB_USERNAME }}
+      PI_GITHUB_PAT_ENV: ${{ secrets.PI_GITHUB_PAT }}
+
     steps:
     
     # Checkout
