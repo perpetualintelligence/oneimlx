@@ -10,14 +10,16 @@ using System;
 namespace PerpetualIntelligence.OneImlx.Licensing
 {
     /// <summary>
-    /// An abstraction of a disposable license.
+    /// An abstraction of a disposable license provider.
     /// </summary>
-    /// <seealso cref="LicensePrincipal"/>
-    public interface ILicense : IDisposable
+    /// <remarks>
+    /// <see cref="ILicenseProvider"/> is an entity such as a license file that provides a <see cref="ILicense"/>.
+    /// </remarks>
+    public interface ILicenseProvider : IDisposable
     {
         /// <summary>
-        /// The principal associated with this license.
+        /// The license.
         /// </summary>
-        LicensePrincipal Principal { get; }
+        public ILicense License { get; }
     }
 }
