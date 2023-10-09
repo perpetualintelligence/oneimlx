@@ -5,7 +5,6 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using PerpetualIntelligence.OneImlx.Licensing.Services;
 using System.Threading.Tasks;
 
 namespace PerpetualIntelligence.OneImlx.Licensing.Core
@@ -20,6 +19,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// </summary>
         /// <param name="context">The license check context.</param>
         /// <returns>The <see cref="LicenseCheckerResult"/> instance.</returns>
-        public Task<LicenseCheckerResult> CheckAsync(LicenseCheckerContext context);
+        public Task<LicenseCheckerResult> CheckLicenseAsync(LicenseCheckerContext context);
     }
 }

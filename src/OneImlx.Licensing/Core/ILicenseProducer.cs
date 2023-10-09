@@ -19,6 +19,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// </summary>
         /// <param name="context">The license producer context.</param>
         /// <returns>The <see cref="LicenseProducerResult"/> instance.</returns>
-        public Task<LicenseExtractorResult> ProduceAsync(LicenseProducerContext context);
+        public Task<LicenseExtractorResult> ProduceLicenseAsync(LicenseProducerContext context);
     }
 }

@@ -19,7 +19,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public Task<LicenseExtractorResult> ExtractAsync(LicenseExtractorContext context);
+        public Task<LicenseExtractorResult> ExtractLicenseAsync(LicenseExtractorContext context);
 
         /// <summary>
         /// Gets the extracted license asynchronously.

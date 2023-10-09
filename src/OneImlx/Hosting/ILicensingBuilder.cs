@@ -7,15 +7,15 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace PerpetualIntelligence.OneImlx.Licensing.Hosting
+namespace PerpetualIntelligence.OneImlx.Hosting
 {
     /// <summary>
-    /// An abstraction of <c>oneimlx</c> service builder.
+    /// An abstraction of <c>oneimlx</c> licensing service builder.
     /// </summary>
     public interface ILicensingBuilder
     {
         /// <summary>
-        /// The global service collection.
+        /// The host service collection.
         /// </summary>
         IServiceCollection Services { get; }
     }

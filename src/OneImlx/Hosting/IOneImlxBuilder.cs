@@ -5,8 +5,6 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace PerpetualIntelligence.OneImlx.Hosting
 {
     /// <summary>
@@ -15,8 +13,8 @@ namespace PerpetualIntelligence.OneImlx.Hosting
     public interface IOneImlxBuilder
     {
         /// <summary>
-        /// The global service collection.
+        /// The licensing service builder.
         /// </summary>
-        IServiceCollection Services { get; }
+        ILicensingBuilder Licensing { get; }
     }
 }
