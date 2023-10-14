@@ -5,11 +5,11 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
+using System.Collections.Generic;
+using System.Security.Principal;
+
 namespace PerpetualIntelligence.OneImlx
 {
-    using System.Collections.Generic;
-    using System.Security.Principal;
-
     /// <summary>
     /// Represents the foundational identity interface for the <c>OneImlx</c> system. This interface serves as the primary blueprint
     /// for defining and interacting with identity entities, accommodating extensibility and integration with diverse applications.
