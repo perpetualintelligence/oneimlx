@@ -8,13 +8,13 @@
 namespace PerpetualIntelligence.OneImlx.Iam.Identities
 {
     /// <summary>
-    /// Defines an abstraction of a product within the <c>OneImlx</c> framework.
+    /// Defines an abstraction of a department within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IProductIdentity : IOneImlxIdentity
+    public interface IDepartmentIdentity : IOneImlxIdentity
     {
         /// <summary>
-        /// Gets the type or category of the product.
+        /// Gets the type or category of the department.
         /// </summary>
-        string ProductType { get; }
+        string DepartmentType { get; }
     }
 }

@@ -12,5 +12,9 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// </summary>
     public interface IOrganizationIdentity : IOneImlxIdentity
     {
+        /// <summary>
+        /// Gets the location or address of the organization.
+        /// </summary>
+        string Location { get; }
     }
 }

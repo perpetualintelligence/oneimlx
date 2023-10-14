@@ -13,7 +13,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     public interface IOperationIdentity : IOneImlxIdentity
     {
         /// <summary>
-        /// Gets the type or category of the process (e.g., manufacturing, operations, logistics).
+        /// Gets the type or category of the operation (e.g., assembly, drilling, loading).
         /// </summary>
         string OperationType { get; }
     }

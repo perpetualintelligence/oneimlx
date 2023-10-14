@@ -12,5 +12,9 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// </summary>
     public interface IServiceIdentity : IOneImlxIdentity
     {
+        /// <summary>
+        /// Gets the type or category of the service (e.g., application, daemon, api).
+        /// </summary>
+        string ServiceType { get; }
     }
 }

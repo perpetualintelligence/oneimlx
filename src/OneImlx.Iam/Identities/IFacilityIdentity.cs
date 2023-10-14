@@ -8,13 +8,13 @@
 namespace PerpetualIntelligence.OneImlx.Iam.Identities
 {
     /// <summary>
-    /// Defines an abstraction of a product within the <c>OneImlx</c> framework.
+    /// Defines an abstraction of a facility entity within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IProductIdentity : IOneImlxIdentity
+    public interface IFacilityIdentity : IOneImlxIdentity
     {
         /// <summary>
-        /// Gets the type or category of the product.
+        /// Gets the location or address of the facility.
         /// </summary>
-        string ProductType { get; }
+        string Location { get; }
     }
 }

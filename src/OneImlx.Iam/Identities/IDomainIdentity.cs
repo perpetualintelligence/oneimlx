@@ -12,5 +12,9 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// </summary>
     public interface IDomainIdentity : IOneImlxIdentity
     {
+        /// <summary>
+        /// Gets the type or category of the domain (e.g., IoT device, server, sensor).
+        /// </summary>
+        string DomainType { get; }
     }
 }
