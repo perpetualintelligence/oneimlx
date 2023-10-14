@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\build\props\PackageLicense.props" />
+  <Import Project="..\..\build\props\PackageLicense.props" />
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
@@ -9,10 +9,6 @@
         </Description>
         <PackageTags>oneimlx</PackageTags>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.32.0" />
-    </ItemGroup>
 
     <!--
         CI CONFIG:
@@ -29,5 +25,11 @@
             </ItemGroup>
         </Otherwise>
     </Choose>
-    
+    <ItemGroup>
+      <None Update="README.md">
+        <PackagePath>\</PackagePath>
+        <Pack>true</Pack>
+      </None>
+    </ItemGroup>
+
 </Project>
