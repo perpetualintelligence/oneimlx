@@ -5,6 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
+using PerpetualIntelligence.OneImlx.Configuration.Iam;
 using PerpetualIntelligence.OneImlx.Configuration.Licensing;
 
 namespace PerpetualIntelligence.OneImlx.Configuration
@@ -15,8 +16,13 @@ namespace PerpetualIntelligence.OneImlx.Configuration
     public sealed class OneImlxOptions
     {
         /// <summary>
+        /// The <c>IAM</c> configuration options.
+        /// </summary>
+        public IamOptions Iam { get; } = new IamOptions();
+
+        /// <summary>
         /// The licensing configuration options.
         /// </summary>
-        public LicensingOptions Licensing { get; set; } = new LicensingOptions();
+        public LicensingOptions Licensing { get; } = new LicensingOptions();
     }
 }
