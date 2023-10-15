@@ -5,21 +5,18 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
+using Microsoft.Extensions.DependencyInjection;
+
 namespace PerpetualIntelligence.OneImlx.Hosting
 {
     /// <summary>
-    /// An abstraction of <c>oneimlx</c> service builder.
+    /// An abstraction of <c>oneimlx</c> IAM service builder.
     /// </summary>
-    public interface IOneImlxBuilder
+    public interface IIamBuilder
     {
         /// <summary>
-        /// The licensing service builder.
+        /// The host service collection.
         /// </summary>
-        ILicensingBuilder Licensing { get; }
-
-        /// <summary>
-        /// The IAM service builder.
-        /// </summary>
-        IIamBuilder Iam { get; }
+        IServiceCollection Services { get; }
     }
 }
