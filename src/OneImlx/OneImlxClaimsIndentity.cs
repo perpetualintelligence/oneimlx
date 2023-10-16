@@ -12,7 +12,7 @@ using System.Security.Claims;
 namespace PerpetualIntelligence.OneImlx
 {
     /// <summary>
-    /// Represents an identity based on claims using the <c>OneImlx</c> framework.
+    /// Represents a claim based <c>OneImlx</c> identity .
     /// </summary>
     /// <remarks>
     /// <see cref="OneImlxClaimsIdentity"/> extends the default <see cref="ClaimsIdentity"/> for the <c>OneImlx</c> framework.
