@@ -22,9 +22,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx", "src\OneImlx\OneI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Tests", "test\OneImlx.Tests\OneImlx.Tests.csproj", "{EC8497C0-A74B-447D-BE64-00106AAF9DB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneImlx.Iam", "src\OneImlx.Iam\OneImlx.Iam.csproj", "{903BC940-4C66-443A-BA21-D94AA794EA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Iam", "src\OneImlx.Iam\OneImlx.Iam.csproj", "{903BC940-4C66-443A-BA21-D94AA794EA94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneImlx.Iam.Tests", "test\OneImlx.Iam.Tests\OneImlx.Iam.Tests.csproj", "{327AC371-1641-464B-81FC-63D001378B0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Iam.Tests", "test\OneImlx.Iam.Tests\OneImlx.Iam.Tests.csproj", "{327AC371-1641-464B-81FC-63D001378B0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CA82F789-3735-4292-8563-6A2B052879F2}"
+	ProjectSection(SolutionItems) = preProject
+		docs\iam.md = docs\iam.md
+		docs\identities.md = docs\identities.md
+		docs\licensing.md = docs\licensing.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
