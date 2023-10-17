@@ -1,7 +1,3 @@
-![under-development](https://img.shields.io/badge/development%20status-under%20development-blue)
-![release-developed](https://img.shields.io/badge/release%20status-pre%20release%20planned%20for%20Dec%202023-brightgreen)
-[![build-test-cross](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml/badge.svg)](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml)
-
 # OneImlx
 
 ## Introduction
@@ -9,23 +5,31 @@
 
 ## Guiding Principles
 
-### 1. Access Management (IAM)
+### 1. Authorization
 - **`who` -> `can-do` -> `what`**: This principle ensures that after identifying a user or entity, `OneImlx` accurately determines the specific actions or operations they are authorized to perform.
 
 ### 2. Licensing
 - **`who` -> `has-license-for` -> `what`**: Here, This principle checks and confirms the licenses associated with a user or entity, making sure they access or use only what they are licensed for.
 
 ## Terminology
+- **who**: Refers to the user or entity being evaluated. In a claims-based context, it represents the claim subject.
+  
+- **can-do**: Indicates the permissible actions or operations that the identified user or entity is authorized to perform. This stems from the claims assigned to the "who".
 
-- **who**: Refers to the user or entity in context. It's essentially the subject of the claims, which can be an individual, system, or another entity within the ecosystem. In `OneImlx`, this is typically represented by a unique identity claim.
+- **has-license-for**: Addresses the entitlements or licenses associated with a user or entity, ascertaining the resources or products they are permitted to access or utilize.
 
-- **can-do**: Represents the actions, operations, or permissions that a user or entity is authorized to perform. In a claims-based system, these are presented as specific claims detailing the permissible actions for the given 'who'.
+- **what**: Represents the end resource, service, or product that the "who" is either licensed to access or authorized to interact with.
 
-- **has-license-for**: An assertion about a user or entity's rights or entitlements. Unlike the 'can-do' which is about permissions, 'has-license-for' delves into the licenses held by the user or entity. In `OneImlx`, licenses are also represented as specific claims, detailing the resources or services the 'who' is licensed to access or utilize.
+## Cross-Platform 
+`OneImlx` is designed to be inherently cross-platform, meaning it's built to function consistently across multiple platforms, be it Windows, Linux, macOS, or others. This capability ensures flexibility and broad applicability, irrespective of the platform preference of the end-users or the organization.
 
-- **what**: Refers to the target or object of the action or the license. In the context of `OneImlx`, it could be a system resource, a feature, a dataset, or any other entity that a user interacts with or utilizes. The exact nature of 'what' is determined by the specifics of the claim in question.
+## Deployment Agnostic
+The framework boasts a deployment-agnostic nature, allowing organizations to deploy it in diverse environments. Whether you want to use `OneImlx` on-premises, in a hybrid setting, or fully in the cloud, the functionality remains consistent. This agnostic approach ensures scalability and adaptability to fit various infrastructure models and future-proofing the system against ever-evolving IT landscapes.
+
+## Feedback
+Your feedback is crucial in shaping `OneImlx` to better fit your needs. For any suggestions, issues, or queries, please head over to our [GitHub Issues](https://github.com/PerpetualIntelligence/OneImlx/issues) and let us know.
+
+## Licensing and Pricing
+Details regarding licensing and pricing for `OneImlx` are still in deliberation and will be determined closer to the pre-release. We aim to structure our pricing to be competitive and provide significant value to our users, ensuring a fair balance of features and costs.
 
 By harmoniously converging IAM with Licensing, `OneImlx` provides a comprehensive framework that ensures both security and compliance, without unnecessary complexity.
-
-
-
