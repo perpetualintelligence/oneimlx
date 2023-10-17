@@ -29,7 +29,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CA82F789-3735-4292-8563-6A2B052879F2}"
 	ProjectSection(SolutionItems) = preProject
 		docs\iam.md = docs\iam.md
-		docs\identities.md = docs\identities.md
 		docs\licensing.md = docs\licensing.md
 	EndProjectSection
 EndProject

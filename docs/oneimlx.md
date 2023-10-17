@@ -1,7 +1,3 @@
-![under-development](https://img.shields.io/badge/development%20status-under%20development-blue)
-![release-developed](https://img.shields.io/badge/release%20status-pre%20release%20planned%20for%20Dec%202023-brightgreen)
-[![build-test-cross](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml/badge.svg)](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml)
-
 # OneImlx
 
 ## Introduction
@@ -9,7 +5,7 @@
 
 ## Guiding Principles
 
-### 1. Access Management (IAM)
+### 1. Authorization
 - **`who` -> `can-do` -> `what`**: This principle ensures that after identifying a user or entity, `OneImlx` accurately determines the specific actions or operations they are authorized to perform.
 
 ### 2. Licensing
@@ -26,6 +22,3 @@
 - **what**: Refers to the target or object of the action or the license. In the context of `OneImlx`, it could be a system resource, a feature, a dataset, or any other entity that a user interacts with or utilizes. The exact nature of 'what' is determined by the specifics of the claim in question.
 
 By harmoniously converging IAM with Licensing, `OneImlx` provides a comprehensive framework that ensures both security and compliance, without unnecessary complexity.
-
-
-
