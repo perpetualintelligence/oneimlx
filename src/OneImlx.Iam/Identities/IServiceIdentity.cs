@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of a service within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IServiceIdentity : IOneImlxIdentity
+    public interface IServiceIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the type or category of the service (e.g., application, daemon, api).

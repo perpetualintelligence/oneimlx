@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of a person or a user within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IPersonIdentity : IOneImlxIdentity
+    public interface IPersonIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the email address associated with the user.

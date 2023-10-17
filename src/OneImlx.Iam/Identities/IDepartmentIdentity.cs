@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of a department within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IDepartmentIdentity : IOneImlxIdentity
+    public interface IDepartmentIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the type or category of the department.

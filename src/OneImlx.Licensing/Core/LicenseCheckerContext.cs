@@ -15,7 +15,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// <summary>
         /// Initialize a new instance.
         /// </summary>
-        public LicenseCheckerContext(ILicense license)
+        public LicenseCheckerContext(License license)
         {
             License = license ?? throw new System.ArgumentNullException(nameof(license));
         }
@@ -23,6 +23,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// <summary>
         /// The license to check.
         /// </summary>
-        public ILicense License { get; }
+        public License License { get; }
     }
 }

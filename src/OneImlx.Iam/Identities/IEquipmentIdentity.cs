@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of large equipment or machinery within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IEquipmentIdentity : IOneImlxIdentity
+    public interface IEquipmentIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the type or category of the equipment (e.g., machine, factory equipment, slt etc.).

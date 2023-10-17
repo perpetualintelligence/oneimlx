@@ -16,7 +16,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// Initializes a new instance.
         /// </summary>
         /// <param name="license">The extracted license.</param>
-        public LicenseExtractorResult(ILicense license)
+        public LicenseExtractorResult(License license)
         {
             License = license;
         }
@@ -24,6 +24,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// <summary>
         /// The extracted licenses.
         /// </summary>
-        public ILicense License { get; }
+        public License License { get; }
     }
 }

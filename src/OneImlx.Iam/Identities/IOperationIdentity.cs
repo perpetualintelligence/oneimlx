@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of a specialized operation within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IOperationIdentity : IOneImlxIdentity
+    public interface IOperationIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the type or category of the operation (e.g., assembly, drilling, loading).

@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of a small device or hardware entity within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IDeviceIdentity : IOneImlxIdentity
+    public interface IDeviceIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the type or category of the device (e.g., IoT device, server, sensor).

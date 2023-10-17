@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of a manufacturing or operations process within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IProcessIdentity : IOneImlxIdentity
+    public interface IProcessIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the type or category of the process (e.g., manufacturing, operations, logistics).

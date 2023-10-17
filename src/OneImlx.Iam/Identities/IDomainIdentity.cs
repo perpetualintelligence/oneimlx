@@ -10,7 +10,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Identities
     /// <summary>
     /// Defines an abstraction of a domain or an engineering discipline within the <c>OneImlx</c> framework.
     /// </summary>
-    public interface IDomainIdentity : IOneImlxIdentity
+    public interface IDomainIdentity : IIamIdentity
     {
         /// <summary>
         /// Gets the type or category of the domain (e.g., IoT device, server, sensor).

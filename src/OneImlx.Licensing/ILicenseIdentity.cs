@@ -5,19 +5,14 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System;
+using System.Security.Principal;
 
 namespace PerpetualIntelligence.OneImlx.Licensing
 {
     /// <summary>
-    /// An abstraction of a disposable license.
+    /// Defines a licensing identity.
     /// </summary>
-    /// <seealso cref="LicensePrincipal"/>
-    public interface ILicense : IDisposable
+    public interface ILicenseIdentity : IIdentity, IId, IName, IMetadata
     {
-        /// <summary>
-        /// The principal associated with this license.
-        /// </summary>
-        LicensePrincipal Principal { get; }
     }
 }

@@ -15,7 +15,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// <summary>
         /// Initialize a new instance.
         /// </summary>
-        public LicenseProducerContext(ILicense license)
+        public LicenseProducerContext(License license)
         {
             License = license;
         }
@@ -23,6 +23,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// <summary>
         /// The license.
         /// </summary>
-        public ILicense License { get; }
+        public License License { get; }
     }
 }

@@ -1,18 +1,18 @@
-﻿/*
+/*
     Copyright (c) 2023 Perpetual Intelligence L.L.C. All Rights Reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System.Security.Claims;
+using System.Security.Principal;
 
 namespace PerpetualIntelligence.OneImlx.Licensing
 {
     /// <summary>
-    /// A <see cref="ClaimsPrincipal"/> implementation that supports multiple claims-based <see cref="LicenseIdentity"/>.
+    /// Define a licensing <see cref="IPrincipal"/>.
     /// </summary>
-    public class LicensePrincipal : ClaimsPrincipal
+    public interface ILicensePrincipal : IPrincipal
     {
     }
 }

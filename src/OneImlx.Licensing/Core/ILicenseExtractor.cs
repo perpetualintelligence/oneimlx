@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace PerpetualIntelligence.OneImlx.Licensing.Core
 {
     /// <summary>
-    /// An abstraction to extract the <see cref="ILicense"/>.
+    /// An abstraction to extract the <see cref="License"/>.
     /// </summary>
     public interface ILicenseExtractor
     {
         /// <summary>
-        /// Extracts the <see cref="ILicense"/> asynchronously.
+        /// Extracts the <see cref="License"/> asynchronously.
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -24,6 +24,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// <summary>
         /// Gets the extracted license asynchronously.
         /// </summary>
-        public Task<ILicense?> GetAsync();
+        public Task<License?> GetAsync();
     }
 }

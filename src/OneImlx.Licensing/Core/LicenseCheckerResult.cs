@@ -16,7 +16,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// Initializes a new instance.
         /// </summary>
         /// <param name="license">The checked license.</param>
-        public LicenseCheckerResult(ILicense license)
+        public LicenseCheckerResult(License license)
         {
             License = license;
         }
@@ -24,6 +24,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing.Core
         /// <summary>
         /// The checked license.
         /// </summary>
-        public ILicense License { get; }
+        public License License { get; }
     }
 }

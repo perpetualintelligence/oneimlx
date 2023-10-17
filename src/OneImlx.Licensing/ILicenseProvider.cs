@@ -13,13 +13,13 @@ namespace PerpetualIntelligence.OneImlx.Licensing
     /// An abstraction of a disposable license provider.
     /// </summary>
     /// <remarks>
-    /// <see cref="ILicenseProvider"/> is an entity such as a license file that provides a <see cref="ILicense"/>.
+    /// <see cref="ILicenseProvider"/> is an entity such as a license file that provides a <see cref="Licensing.License"/>.
     /// </remarks>
     public interface ILicenseProvider : IDisposable
     {
         /// <summary>
         /// The license.
         /// </summary>
-        public ILicense License { get; }
+        public License License { get; }
     }
 }
