@@ -1,6 +1,10 @@
 # OneImlx
+![under-development](https://img.shields.io/badge/development%20status-under%20development-blue)
+![release-developed](https://img.shields.io/badge/release%20status-pre%20release%20planned%20for%20Dec%202023-brightgreen)
+[![build-test-cross](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml/badge.svg)](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml)
 
 ## Introduction
+
 `OneImlx` is a unified claims-based framework for managing both identity-related authorizations and licensing entitlements. At its core, it addresses two pivotal questions: **what** actions or operations can a user or entity perform (i.e., "can-do") and **what** are they licensed for (i.e., "has-license-for").
 
 ## Guiding Principles
