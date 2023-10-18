@@ -6,6 +6,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace PerpetualIntelligence.OneImlx.Licensing
@@ -30,5 +31,10 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         public LicenseClaimsPrincipal(LicenseClaimsIdentity identity) : base(identity)
         {
         }
+
+        /// <summary>
+        /// The collection of identities associated with this principal.
+        /// </summary>
+        IEnumerable<ILicenseIdentity> ILicensePrincipal.Identities => base.Identities.Cast<ILicenseIdentity>();
     }
 }

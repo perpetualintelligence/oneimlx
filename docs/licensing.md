@@ -14,6 +14,36 @@ Central to our framework is the principle: **`who` -> `has-license-for` -> `what
 - **Has-License-For**: The set of licensing claims granted to the entity.
 - **What**: The specific resource (software *or* product feature) for which the license is issued.
 
+## IAM in Licensing
+
+Traditionally, licensing systems and identity & access management (IAM) systems have operated in separate realms. The former ensures that users possess the right to use a particular software or service, while the latter ensures that users have the appropriate permissions to perform actions within that software or service.
+
+`OneImlx`, proposes a seamless integration between licensing and IAM, combining the verification of both a identiy's right to access and their permissions into a unified system. This integrated model offers streamlined management, better user experience, and enhanced security.
+
+1. **Authentication**: 
+    At the heart of every IAM system is the principle of authentication. In our design, this is tied directly to licensing. A user (or more specifically, a `LicenseIdentity`) is authenticated if they hold a valid license. This transforms the license from a mere "right to use" into a core component of identity verification.
+
+2. **Authorization**: 
+    After authentication, we address the question: "What can an authenticated identity do?" This is where the integration shines. With the `HasPermission` method, we determine the actions (or permissions) a licensed user can execute on their licensed resources. 
+
+3. **Role-Based Access Control (RBAC)**: 
+    Typically, IAM solutions leverage RBAC to group permissions under roles for easier management. In our design, a role is analogous to a license. By associating roles (or licenses) with sets of permissions, we create a clear structure where each license not only grants access to a resource but also defines the permissible actions on that resource.
+
+4. **Unified Management**: 
+    By integrating licensing with IAM, organizations have a single point of management for both access and permissions, streamlining administrative workflows.
+  
+5. **Enhanced Security**: 
+    This integrated approach ensures that every action, from access to execution, is governed by a valid license, enhancing security and reducing potential vulnerabilities.
+  
+6. **Scalability and Flexibility**: 
+    The model is designed to scale with growing organizations and adapt to complex licensing relationships. Whether granting broad permissions across multiple resources or fine-tuning permissions for specific roles, this system is both robust and adaptable.
+
+7. **Improved User Experience**: 
+    For end-users, the integration means fewer steps to gain access and perform actions, leading to a smoother, more intuitive experience.
+
+By fusing the worlds of licensing and IAM, we've crafted a system that’s not just about access, but about actions. This forward-thinking design ensures that licensing becomes a dynamic part of the user experience, ensuring both access and the right to act.
+
+
 ## Terminology
 For clear comprehension, here are the primary terms:
 
