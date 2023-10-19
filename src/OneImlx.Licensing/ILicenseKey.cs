@@ -5,12 +5,12 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Iam.Rbac
+namespace PerpetualIntelligence.OneImlx.Licensing
 {
     /// <summary>
-    /// An abstraction of an <c>IAM</c> role.
+    /// An abstraction of a license key.
     /// </summary>
-    public interface IRole : IId, IName, IDescription
+    public interface ILicenseKey
     {
     }
 }

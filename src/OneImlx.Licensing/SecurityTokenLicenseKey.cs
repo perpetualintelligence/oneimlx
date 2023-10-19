@@ -10,15 +10,15 @@ using Microsoft.IdentityModel.Tokens;
 namespace PerpetualIntelligence.OneImlx.Licensing
 {
     /// <summary>
-    /// Represents a license key.
+    /// Represents a <see cref="SecurityToken"/> based license key.
     /// </summary>
-    public sealed class LicenseKey
+    public sealed class SecurityTokenLicenseKey : ILicenseKey
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="LicenseKey"/>.
+        /// Initializes a new instance of <see cref="SecurityTokenLicenseKey"/>.
         /// </summary>
         /// <param name="securityToken">The security token associated with this license key.</param>
-        public LicenseKey(SecurityToken securityToken)
+        public SecurityTokenLicenseKey(SecurityToken securityToken)
         {
             SecurityToken = securityToken;
         }

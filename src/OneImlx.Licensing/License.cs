@@ -33,7 +33,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         /// <param name="resources">The set of licensed resources.</param>
         /// <param name="licenseKey">The unique identifier for the license.</param>
         /// <param name="targetSystem">Specifies the target system if the license is shared across the entire system or a specific sub-system.</param>
-        public License(IEnumerable<ILicensePrincipal> principals, IEnumerable<ILicenseResource> resources, LicenseKey licenseKey, ILicenseResource? targetSystem = null)
+        public License(IEnumerable<ILicensePrincipal> principals, IEnumerable<ILicenseResource> resources, ILicenseKey licenseKey, ILicenseResource? targetSystem = null)
         {
             _principals = new HashSet<ILicensePrincipal>(principals);
             _resources = new HashSet<ILicenseResource>(resources);
@@ -42,9 +42,9 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         }
 
         /// <summary>
-        /// The unique identifier for the license.
+        /// The license key.
         /// </summary>
-        public LicenseKey LicenseKey { get; }
+        public ILicenseKey LicenseKey { get; }
 
         /// <summary>
         /// Specifies the target system if the license is applicable as a shared license across either the entire system or a particular sub-system.

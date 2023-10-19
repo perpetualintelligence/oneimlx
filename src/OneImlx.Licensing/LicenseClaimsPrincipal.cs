@@ -6,7 +6,6 @@
 */
 
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 
 namespace PerpetualIntelligence.OneImlx.Licensing
@@ -32,9 +31,11 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         {
         }
 
-        /// <summary>
-        /// The collection of identities associated with this principal.
-        /// </summary>
-        IEnumerable<ILicenseIdentity> ILicensePrincipal.Identities => base.Identities.Cast<ILicenseIdentity>();
+        IEnumerable<ILicenseIdentity> ILicensePrincipal.Identities => throw new System.NotImplementedException();
+
+        public bool IsLicensed(string identityId, out ILicenseIdentity? licenseIdentity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
