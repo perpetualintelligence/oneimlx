@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CA82F789-3
 		docs\oneimlx.md = docs\oneimlx.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneImlx.Sessions", "src\OneImlx.Sessions\OneImlx.Sessions.csproj", "{4B1B237E-44F2-4FB7-84A9-BCE92B88557E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{327AC371-1641-464B-81FC-63D001378B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{327AC371-1641-464B-81FC-63D001378B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{327AC371-1641-464B-81FC-63D001378B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B1B237E-44F2-4FB7-84A9-BCE92B88557E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B1B237E-44F2-4FB7-84A9-BCE92B88557E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B1B237E-44F2-4FB7-84A9-BCE92B88557E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B1B237E-44F2-4FB7-84A9-BCE92B88557E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{EC8497C0-A74B-447D-BE64-00106AAF9DB6} = {57ADE862-CE1D-4973-A0D1-B362E1CAB5A2}
 		{903BC940-4C66-443A-BA21-D94AA794EA94} = {4C83B255-59A1-4BC5-8C40-E79CD843F38B}
 		{327AC371-1641-464B-81FC-63D001378B0F} = {57ADE862-CE1D-4973-A0D1-B362E1CAB5A2}
+		{4B1B237E-44F2-4FB7-84A9-BCE92B88557E} = {4C83B255-59A1-4BC5-8C40-E79CD843F38B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8756568-1C46-4694-9376-03B7BB06C0C8}
