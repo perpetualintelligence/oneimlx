@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using System.Security.Principal;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// Defines a licensing <see cref="IPrincipal"/>. Establishes the <c>has-license-for</c>.

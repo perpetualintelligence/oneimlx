@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PerpetualIntelligence.OneImlx.Iam.Stores
+namespace OneImlx.Iam.Stores
 {
     /// <summary>
     /// Provides an in-memory <see cref="IImmutableStore{TEntity}"/> for <c>IAM</c> entities.
@@ -24,8 +24,6 @@ namespace PerpetualIntelligence.OneImlx.Iam.Stores
     /// </remarks>
     public class ImmutableInMemoryStore<TEntity> : IImmutableStore<TEntity> where TEntity : IId
     {
-        private readonly IReadOnlyDictionary<string, TEntity> _entities;
-
         /// <summary>
         /// Initializes a new instance with the specified entities.
         /// </summary>
@@ -70,5 +68,7 @@ namespace PerpetualIntelligence.OneImlx.Iam.Stores
 
             return Task.FromResult(new FindResult<TEntity>(false, default));
         }
+
+        private readonly IReadOnlyDictionary<string, TEntity> _entities;
     }
 }

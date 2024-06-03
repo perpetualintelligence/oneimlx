@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Configuration.Iam
+namespace OneImlx.Configuration.Iam
 {
     /// <summary>
     /// An abstraction of licensing configuration options.

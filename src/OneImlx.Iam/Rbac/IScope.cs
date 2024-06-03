@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Iam.Rbac
+namespace OneImlx.Iam.Rbac
 {
     /// <summary>
     /// Represents an <c>IAM</c> scope which defines a specific area or level of access.

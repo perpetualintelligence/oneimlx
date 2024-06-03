@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PerpetualIntelligence.OneImlx.Iam.Stores
+namespace OneImlx.Iam.Stores
 {
     /// <summary>
     /// Represents an in-memory mutable store for entities.
@@ -35,8 +35,6 @@ namespace PerpetualIntelligence.OneImlx.Iam.Stores
     /// </remarks>
     public class MutableInMemoryStore<TEntity> : IMutableStore<TEntity> where TEntity : IId
     {
-        private readonly ConcurrentDictionary<string, TEntity> _entities;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MutableInMemoryStore{TEntity}"/> class
         /// with the provided entities.
@@ -60,14 +58,10 @@ namespace PerpetualIntelligence.OneImlx.Iam.Stores
         }
 
         /// <inheritdoc/>
-        public Task<FindResult<TEntity>> TryFindAsync(string id)
+        public Task ClearAsync()
         {
-            if (_entities.TryGetValue(id, out TEntity entity))
-            {
-                return Task.FromResult(new FindResult<TEntity>(true, entity));
-            }
-
-            return Task.FromResult(new FindResult<TEntity>(false, default));
+            _entities.Clear();
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc/>
@@ -82,17 +76,23 @@ namespace PerpetualIntelligence.OneImlx.Iam.Stores
         }
 
         /// <inheritdoc/>
+        public Task<FindResult<TEntity>> TryFindAsync(string id)
+        {
+            if (_entities.TryGetValue(id, out TEntity entity))
+            {
+                return Task.FromResult(new FindResult<TEntity>(true, entity));
+            }
+
+            return Task.FromResult(new FindResult<TEntity>(false, default));
+        }
+
+        /// <inheritdoc/>
         public Task<RemoveResult<TEntity>> TryRemoveAsync(string id)
         {
             bool removed = _entities.TryRemove(id, out TEntity? entity);
             return Task.FromResult(new RemoveResult<TEntity>(removed, entity));
         }
 
-        /// <inheritdoc/>
-        public Task ClearAsync()
-        {
-            _entities.Clear();
-            return Task.CompletedTask;
-        }
+        private readonly ConcurrentDictionary<string, TEntity> _entities;
     }
 }

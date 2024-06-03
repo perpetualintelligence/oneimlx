@@ -7,7 +7,7 @@
 
 using System.Security.Principal;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// Defines a licensing identity. Establishes the <c>who</c>.

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// Represents a <c>OneImlx</c> license.
@@ -23,9 +23,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing
     /// <seealso cref="ILicenseResource"/>
     public sealed class License
     {
-        private readonly HashSet<ILicensePrincipal> _principals;
-        private readonly HashSet<ILicenseResource> _resources;
-
         /// <summary>
         /// Initializes a new instance of the License class.
         /// </summary>
@@ -47,11 +44,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         public ILicenseKey LicenseKey { get; }
 
         /// <summary>
-        /// Specifies the target system if the license is applicable as a shared license across either the entire system or a particular sub-system.
-        /// </summary>
-        public ILicenseResource? TargetSystem { get; }
-
-        /// <summary>
         /// Provides read-only access to the set of licensed principals.
         /// </summary>
         public IReadOnlyCollection<ILicensePrincipal> Principals => new ReadOnlyCollection<ILicensePrincipal>(_principals.ToList());
@@ -60,6 +52,11 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         /// Provides read-only access to the set of licensed resources.
         /// </summary>
         public IReadOnlyCollection<ILicenseResource> Resources => new ReadOnlyCollection<ILicenseResource>(_resources.ToList());
+
+        /// <summary>
+        /// Specifies the target system if the license is applicable as a shared license across either the entire system or a particular sub-system.
+        /// </summary>
+        public ILicenseResource? TargetSystem { get; }
 
         /// <summary>
         /// Determines whether the specified principal is licensed for the given resource.
@@ -82,5 +79,8 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         {
             return _principals.Any(p => p.Identities.Any(e => e.Id.Equals(identityId))) && _resources.Any(r => r.Id == resourceId);
         }
+
+        private readonly HashSet<ILicensePrincipal> _principals;
+        private readonly HashSet<ILicenseResource> _resources;
     }
 }

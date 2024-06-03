@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace PerpetualIntelligence.OneImlx
+namespace OneImlx
 {
     /// <summary>
     /// Represents an interface that offers additional integration-related attributes to an identity,
@@ -15,6 +15,16 @@ namespace PerpetualIntelligence.OneImlx
     /// </summary>
     public interface IIntegration
     {
+        /// <summary>
+        /// Retrieves or assigns a mapping of external identifiers.
+        /// </summary>
+        /// <remarks>
+        /// This dictionary's key represents an identifier from an external system, while the associated value is the external ID
+        /// corresponding to the current identity. This structure provides a mechanism for correlating this identity with its representations
+        /// in diverse external platforms or systems.
+        /// </remarks>
+        IDictionary<string, string>? ExternalIds { get; }
+
         /// <summary>
         /// Gets or sets a collection of locales pertinent to the identity.
         /// </summary>
@@ -25,15 +35,5 @@ namespace PerpetualIntelligence.OneImlx
         /// Such a design facilitates seamless operation for identities that span multiple linguistic or geographic boundaries.
         /// </remarks>
         IList<string>? Locales { get; }
-
-        /// <summary>
-        /// Retrieves or assigns a mapping of external identifiers.
-        /// </summary>
-        /// <remarks>
-        /// This dictionary's key represents an identifier from an external system, while the associated value is the external ID
-        /// corresponding to the current identity. This structure provides a mechanism for correlating this identity with its representations
-        /// in diverse external platforms or systems.
-        /// </remarks>
-        IDictionary<string, string>? ExternalIds { get; }
     }
 }

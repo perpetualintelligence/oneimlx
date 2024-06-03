@@ -28,8 +28,8 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
-        <RootNamespace>PerpetualIntelligence.$(MSBuildProjectName)</RootNamespace>
-        <AssemblyName>PerpetualIntelligence.$(MSBuildProjectName)</AssemblyName>
+        <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+        <AssemblyName>$(MSBuildProjectName)</AssemblyName>
 
         <!--
             AzureDevOps and CI/CD pipelines with versioning built-in. So we utilize msbuild's Condition attribute.

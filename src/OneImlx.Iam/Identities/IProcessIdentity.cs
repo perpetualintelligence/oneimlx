@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Iam.Identities
+namespace OneImlx.Iam.Identities
 {
     /// <summary>
     /// Defines an abstraction of a manufacturing or operations process within the <c>OneImlx</c> framework.

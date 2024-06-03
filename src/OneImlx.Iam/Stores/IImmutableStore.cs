@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PerpetualIntelligence.OneImlx.Iam.Stores
+namespace OneImlx.Iam.Stores
 {
     /// <summary>
     /// Represents an immutable store for <c>IAM</c> entities.

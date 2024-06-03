@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Licensing.Core
+namespace OneImlx.Licensing.Core
 {
     /// <summary>
     /// The default <see cref="ILicenseChecker"/> context.

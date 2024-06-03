@@ -5,10 +5,10 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using PerpetualIntelligence.OneImlx.Configuration.Iam;
-using PerpetualIntelligence.OneImlx.Configuration.Licensing;
+using OneImlx.Configuration.Iam;
+using OneImlx.Configuration.Licensing;
 
-namespace PerpetualIntelligence.OneImlx.Configuration
+namespace OneImlx.Configuration
 {
     /// <summary>
     /// The <c>oneimlx</c> configuration options.

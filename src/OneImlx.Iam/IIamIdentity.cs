@@ -7,7 +7,7 @@
 
 using System.Security.Principal;
 
-namespace PerpetualIntelligence.OneImlx.Iam
+namespace OneImlx.Iam
 {
     /// <summary>
     /// Defines a genric <c>OneImlx</c> IAM identity.

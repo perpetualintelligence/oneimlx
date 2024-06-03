@@ -7,7 +7,7 @@
 
 using System.Threading.Tasks;
 
-namespace PerpetualIntelligence.OneImlx.Licensing.Core
+namespace OneImlx.Licensing.Core
 {
     /// <summary>
     /// An abstraction to extract the <see cref="License"/>.

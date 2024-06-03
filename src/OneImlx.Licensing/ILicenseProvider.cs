@@ -7,7 +7,7 @@
 
 using System;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// An abstraction of a disposable license provider.

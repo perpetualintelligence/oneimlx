@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx
+namespace OneImlx
 {
     /// <summary>
     /// Defines an interface for objects that have a name.

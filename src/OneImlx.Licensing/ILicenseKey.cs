@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// An abstraction of a license key.

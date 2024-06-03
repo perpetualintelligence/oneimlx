@@ -7,15 +7,13 @@
 
 using System.Collections.Generic;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// The claim based <see cref="ILicenseManager"/>.
     /// </summary>
     public class LicenseClaimsManager : ILicenseManager
     {
-        private readonly HashSet<License> _licenses = new();
-
         /// <inheritdoc/>
         public bool HasLicenseFor(ILicenseIdentity identity, ILicenseResource resource, out License? license)
         {
@@ -33,5 +31,7 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         {
             throw new System.NotImplementedException();
         }
+
+        private readonly HashSet<License> _licenses = new();
     }
 }

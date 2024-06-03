@@ -21,7 +21,7 @@
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="PerpetualIntelligence.OneImlx" Version="$(PI_CI_PACKAGE_VERSION)" />
+                <PackageReference Include="OneImlx" Version="$(PI_CI_PACKAGE_VERSION)" />
             </ItemGroup>
         </Otherwise>
     </Choose>

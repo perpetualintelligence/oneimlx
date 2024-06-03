@@ -7,7 +7,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// Represents a <see cref="SecurityToken"/> based license key.

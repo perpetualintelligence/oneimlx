@@ -8,7 +8,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace PerpetualIntelligence.OneImlx.Configuration
+namespace OneImlx.Configuration
 {
     public class OneImlxOptionsTests
     {

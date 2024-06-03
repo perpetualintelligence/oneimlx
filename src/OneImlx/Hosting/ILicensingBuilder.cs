@@ -7,7 +7,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace PerpetualIntelligence.OneImlx.Hosting
+namespace OneImlx.Hosting
 {
     /// <summary>
     /// An abstraction of <c>oneimlx</c> licensing service builder.

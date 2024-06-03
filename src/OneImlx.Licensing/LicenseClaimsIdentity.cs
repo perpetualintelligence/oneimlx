@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// Represents a claims-based <see cref="ILicenseIdentity"/>. Equality of instances of <see cref="LicenseClaimsIdentity"/> is determined solely based on the <see cref="Id"/> property.
@@ -41,6 +41,11 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         }
 
         /// <summary>
+        /// Gets or sets custom attributes of the identity.
+        /// </summary>
+        public HashSet<string>? Attributes { get; set; }
+
+        /// <summary>
         /// Gets the unique identifier for the identity.
         /// </summary>
         public string Id { get; }
@@ -49,16 +54,32 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         /// Gets or sets custom properties associated with the identity.
         /// </summary>
         public IDictionary<string, object>? Properties { get; set; }
-
-        /// <summary>
-        /// Gets or sets custom attributes of the identity.
-        /// </summary>
-        public HashSet<string>? Attributes { get; set; }
-
         /// <summary>
         /// Gets or sets tags associated with the identity.
         /// </summary>
         public HashSet<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Determines whether two specified instances of <see cref="LicenseClaimsIdentity"/> are not equal.
+        /// </summary>
+        /// <param name="left">The first <see cref="LicenseClaimsIdentity"/> to compare.</param>
+        /// <param name="right">The second <see cref="LicenseClaimsIdentity"/> to compare.</param>
+        /// <returns>True if the two instances are not equal; otherwise, false.</returns>
+        public static bool operator !=(LicenseClaimsIdentity? left, LicenseClaimsIdentity? right)
+        {
+            return !(left == right);
+        }
+
+        /// <summary>
+        /// Determines whether two specified instances of <see cref="LicenseClaimsIdentity"/> are equal.
+        /// </summary>
+        /// <param name="left">The first <see cref="LicenseClaimsIdentity"/> to compare.</param>
+        /// <param name="right">The second <see cref="LicenseClaimsIdentity"/> to compare.</param>
+        /// <returns>True if the two instances are equal; otherwise, false.</returns>
+        public static bool operator ==(LicenseClaimsIdentity? left, LicenseClaimsIdentity? right)
+        {
+            return EqualityComparer<LicenseClaimsIdentity?>.Default.Equals(left, right);
+        }
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object.
@@ -88,28 +109,6 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         public override int GetHashCode()
         {
             return Id.GetHashCode();
-        }
-
-        /// <summary>
-        /// Determines whether two specified instances of <see cref="LicenseClaimsIdentity"/> are equal.
-        /// </summary>
-        /// <param name="left">The first <see cref="LicenseClaimsIdentity"/> to compare.</param>
-        /// <param name="right">The second <see cref="LicenseClaimsIdentity"/> to compare.</param>
-        /// <returns>True if the two instances are equal; otherwise, false.</returns>
-        public static bool operator ==(LicenseClaimsIdentity? left, LicenseClaimsIdentity? right)
-        {
-            return EqualityComparer<LicenseClaimsIdentity?>.Default.Equals(left, right);
-        }
-
-        /// <summary>
-        /// Determines whether two specified instances of <see cref="LicenseClaimsIdentity"/> are not equal.
-        /// </summary>
-        /// <param name="left">The first <see cref="LicenseClaimsIdentity"/> to compare.</param>
-        /// <param name="right">The second <see cref="LicenseClaimsIdentity"/> to compare.</param>
-        /// <returns>True if the two instances are not equal; otherwise, false.</returns>
-        public static bool operator !=(LicenseClaimsIdentity? left, LicenseClaimsIdentity? right)
-        {
-            return !(left == right);
         }
     }
 }

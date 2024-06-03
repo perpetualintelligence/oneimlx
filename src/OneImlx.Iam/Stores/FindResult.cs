@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Iam.Stores
+namespace OneImlx.Iam.Stores
 {
     /// <summary>
     /// Represents the result of a find operation.
@@ -13,16 +13,6 @@ namespace PerpetualIntelligence.OneImlx.Iam.Stores
     /// <typeparam name="TEntity">The type of entity.</typeparam>
     public sealed class FindResult<TEntity> where TEntity : IId
     {
-        /// <summary>
-        /// Indicates whether the entity was found.
-        /// </summary>
-        public bool Found { get; }
-
-        /// <summary>
-        /// The entity that was found. <c>null</c> if not found.
-        /// </summary>
-        public TEntity? Entity { get; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="FindResult{TEntity}"/> class.
         /// </summary>
@@ -33,5 +23,15 @@ namespace PerpetualIntelligence.OneImlx.Iam.Stores
             Found = found;
             Entity = entity;
         }
+
+        /// <summary>
+        /// The entity that was found. <c>null</c> if not found.
+        /// </summary>
+        public TEntity? Entity { get; }
+
+        /// <summary>
+        /// Indicates whether the entity was found.
+        /// </summary>
+        public bool Found { get; }
     }
 }

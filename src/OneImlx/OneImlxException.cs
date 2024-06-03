@@ -1,18 +1,18 @@
 ﻿/*
-    Copyright (c) 2023 Perpetual Intelligence L.L.C. All Rights Reserved.
+    Copyright 2024 (c) Perpetual Intelligence L.L.C. All Rights Reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using PerpetualIntelligence.Shared.Exceptions;
+using OneImlx.Shared.Infrastructure;
 
-namespace PerpetualIntelligence.OneImlx
+namespace OneImlx
 {
     /// <summary>
     /// The base <c>oneimlx</c> exception.
     /// </summary>
-    public class OneImlxException : ErrorException
+    public sealed class OneImlxException : ErrorException
     {
         /// <summary>
         /// Initializes a new instance of <see cref="OneImlxException"/>.

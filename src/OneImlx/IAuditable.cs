@@ -7,7 +7,7 @@
 
 using System;
 
-namespace PerpetualIntelligence.OneImlx
+namespace OneImlx
 {
     /// <summary>
     /// Provides a set of properties that enable auditing of an identity's creation and last modification timestamps.

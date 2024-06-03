@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx.Iam.Rbac
+namespace OneImlx.Iam.Rbac
 {
     /// <summary>
     /// An abstraction of an <c>IAM</c> role permission.

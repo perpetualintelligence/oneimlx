@@ -7,81 +7,17 @@
 
 using FluentAssertions;
 using Moq;
-using PerpetualIntelligence.OneImlx.Iam.Stores;
+using OneImlx.Iam.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace PerpetualIntelligence.OneImlx.Iam
+namespace OneImlx.Iam
 {
     public class MutableInMemoryStoreTests
     {
-        [Fact]
-        public void Constructor_ShouldThrow_WhenEntitiesIsNull()
-        {
-            Action act = () => new MutableInMemoryStore<IId>(null!);
-            act.Should().Throw<ArgumentNullException>();
-        }
-
-        [Fact]
-        public async Task TryAddAsync_ShouldAddEntity_WhenEntityDoesNotExist()
-        {
-            var entityMock = new Mock<IId>();
-            entityMock.Setup(e => e.Id).Returns("1");
-
-            var store = new MutableInMemoryStore<IId>(Enumerable.Empty<IId>());
-            bool added = await store.TryAddAsync(entityMock.Object);
-
-            added.Should().BeTrue();
-
-            FindResult<IId> foundResult = await store.TryFindAsync(entityMock.Object.Id);
-            foundResult.Found.Should().BeTrue();
-            foundResult.Entity.Should().NotBeNull();
-            foundResult.Entity!.Id.Should().Be("1");
-        }
-
-        [Fact]
-        public async Task TryAddAsync_ShouldNotAddEntity_WhenEntityExists()
-        {
-            var entityMock = new Mock<IId>();
-            entityMock.Setup(e => e.Id).Returns("1");
-
-            var store = new MutableInMemoryStore<IId>(new List<IId> { entityMock.Object });
-            bool added = await store.TryAddAsync(entityMock.Object);
-
-            added.Should().BeFalse();
-        }
-
-        [Fact]
-        public async Task TryRemoveAsync_ShouldRemoveEntity_WhenEntityExists()
-        {
-            var entityMock = new Mock<IId>();
-            entityMock.Setup(e => e.Id).Returns("1");
-
-            var store = new MutableInMemoryStore<IId>(new List<IId> { entityMock.Object });
-            (await store.TryFindAsync(entityMock.Object.Id)).Found.Should().BeTrue();
-
-            RemoveResult<IId> removedResult = await store.TryRemoveAsync(entityMock.Object.Id);
-
-            removedResult.Removed.Should().BeTrue();
-            removedResult.Entity.Should().NotBeNull();
-            removedResult.Entity!.Id.Should().Be("1");
-
-            (await store.TryFindAsync(entityMock.Object.Id)).Found.Should().BeFalse();
-        }
-
-        [Fact]
-        public async Task TryRemoveAsync_ShouldNotRemoveEntity_WhenEntityDoesNotExists()
-        {
-            var store = new MutableInMemoryStore<IId>(Enumerable.Empty<IId>());
-            RemoveResult<IId> removedResult = await store.TryRemoveAsync("unknown-id");
-
-            removedResult.Removed.Should().BeFalse();
-            removedResult.Entity.Should().BeNull();
-        }
-
         [Fact]
         public async Task ClearAsync_ShouldClearAllEntities()
         {
@@ -122,40 +58,6 @@ namespace PerpetualIntelligence.OneImlx.Iam
                 store.TryAddAsync(entity3Mock.Object),
                 store.TryRemoveAsync("1"),
                 store.ClearAsync()
-            };
-
-            // Act & Assert
-            await Task.WhenAll(tasks);
-
-            // No exceptions should be thrown during concurrent operations
-        }
-
-        [Fact]
-        public async Task Concurrent_Operations_ShouldNotCauseExceptions()
-        {
-            // Arrange
-            const int entityCount = 100;
-            var entities = new List<IId>();
-
-            for (int i = 1; i <= entityCount; i++)
-            {
-                var entityMock = new Mock<IId>();
-                entityMock.Setup(e => e.Id).Returns(i.ToString());
-                entities.Add(entityMock.Object);
-            }
-
-            var store = new MutableInMemoryStore<IId>(entities);
-
-            var entityAdd = new Mock<IId>();
-            entityAdd.Setup(e => e.Id).Returns("5000");
-
-            // Concurrent tasks for Add, Remove, Clear, and TryFind operations
-            var tasks = new List<Task>
-            {
-                store.TryAddAsync(entityAdd.Object),
-                store.TryRemoveAsync("1"),
-                store.ClearAsync(),
-                store.TryFindAsync("50")
             };
 
             // Act & Assert
@@ -221,5 +123,102 @@ namespace PerpetualIntelligence.OneImlx.Iam
             }
         }
 
+        [Fact]
+        public async Task Concurrent_Operations_ShouldNotCauseExceptions()
+        {
+            // Arrange
+            const int entityCount = 100;
+            var entities = new List<IId>();
+
+            for (int i = 1; i <= entityCount; i++)
+            {
+                var entityMock = new Mock<IId>();
+                entityMock.Setup(e => e.Id).Returns(i.ToString());
+                entities.Add(entityMock.Object);
+            }
+
+            var store = new MutableInMemoryStore<IId>(entities);
+
+            var entityAdd = new Mock<IId>();
+            entityAdd.Setup(e => e.Id).Returns("5000");
+
+            // Concurrent tasks for Add, Remove, Clear, and TryFind operations
+            var tasks = new List<Task>
+            {
+                store.TryAddAsync(entityAdd.Object),
+                store.TryRemoveAsync("1"),
+                store.ClearAsync(),
+                store.TryFindAsync("50")
+            };
+
+            // Act & Assert
+            await Task.WhenAll(tasks);
+
+            // No exceptions should be thrown during concurrent operations
+        }
+
+        [Fact]
+        public void Constructor_ShouldThrow_WhenEntitiesIsNull()
+        {
+            Action act = () => new MutableInMemoryStore<IId>(null!);
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public async Task TryAddAsync_ShouldAddEntity_WhenEntityDoesNotExist()
+        {
+            var entityMock = new Mock<IId>();
+            entityMock.Setup(e => e.Id).Returns("1");
+
+            var store = new MutableInMemoryStore<IId>(Enumerable.Empty<IId>());
+            bool added = await store.TryAddAsync(entityMock.Object);
+
+            added.Should().BeTrue();
+
+            FindResult<IId> foundResult = await store.TryFindAsync(entityMock.Object.Id);
+            foundResult.Found.Should().BeTrue();
+            foundResult.Entity.Should().NotBeNull();
+            foundResult.Entity!.Id.Should().Be("1");
+        }
+
+        [Fact]
+        public async Task TryAddAsync_ShouldNotAddEntity_WhenEntityExists()
+        {
+            var entityMock = new Mock<IId>();
+            entityMock.Setup(e => e.Id).Returns("1");
+
+            var store = new MutableInMemoryStore<IId>(new List<IId> { entityMock.Object });
+            bool added = await store.TryAddAsync(entityMock.Object);
+
+            added.Should().BeFalse();
+        }
+
+        [Fact]
+        public async Task TryRemoveAsync_ShouldNotRemoveEntity_WhenEntityDoesNotExists()
+        {
+            var store = new MutableInMemoryStore<IId>(Enumerable.Empty<IId>());
+            RemoveResult<IId> removedResult = await store.TryRemoveAsync("unknown-id");
+
+            removedResult.Removed.Should().BeFalse();
+            removedResult.Entity.Should().BeNull();
+        }
+
+        [Fact]
+        public async Task TryRemoveAsync_ShouldRemoveEntity_WhenEntityExists()
+        {
+            var entityMock = new Mock<IId>();
+            entityMock.Setup(e => e.Id).Returns("1");
+
+            var store = new MutableInMemoryStore<IId>(new List<IId> { entityMock.Object });
+            (await store.TryFindAsync(entityMock.Object.Id)).Found.Should().BeTrue();
+
+            RemoveResult<IId> removedResult = await store.TryRemoveAsync(entityMock.Object.Id);
+
+            removedResult.Removed.Should().BeTrue();
+            removedResult.Entity.Should().NotBeNull();
+            removedResult.Entity!.Id.Should().Be("1");
+
+            (await store.TryFindAsync(entityMock.Object.Id)).Found.Should().BeFalse();
+        }
     }
 }

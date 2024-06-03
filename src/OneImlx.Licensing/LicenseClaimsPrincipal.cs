@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// A <see cref="ClaimsPrincipal"/> implementation that supports multiple claims-based <see cref="LicenseClaimsIdentity"/>.

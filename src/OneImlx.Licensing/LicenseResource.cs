@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace PerpetualIntelligence.OneImlx.Licensing
+namespace OneImlx.Licensing
 {
     /// <summary>
     /// Represents resources that can be licensed.
@@ -31,6 +31,16 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         }
 
         /// <summary>
+        /// The resource attributes.
+        /// </summary>
+        public HashSet<string>? Attributes { get; set; }
+
+        /// <summary>
+        /// The resource description.
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
         /// The resource identifier.
         /// </summary>
         public string Id { get; }
@@ -39,22 +49,10 @@ namespace PerpetualIntelligence.OneImlx.Licensing
         /// The resource name.
         /// </summary>
         public string Name { get; }
-
-        /// <summary>
-        /// The resource description.
-        /// </summary>
-        public string Description { get; }
-
         /// <summary>
         /// The resource properties.
         /// </summary>
         public IDictionary<string, object>? Properties { get; set; }
-
-        /// <summary>
-        /// The resource attributes.
-        /// </summary>
-        public HashSet<string>? Attributes { get; set; }
-
         /// <summary>
         /// The resource tags.
         /// </summary>

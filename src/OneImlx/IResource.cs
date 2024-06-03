@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace PerpetualIntelligence.OneImlx
+namespace OneImlx
 {
     /// <summary>
     /// Defines a target for the permissions.
