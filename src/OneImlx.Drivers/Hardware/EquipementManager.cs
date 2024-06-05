@@ -6,14 +6,14 @@
 */
 
 using System;
+using System.Collections.Generic;
 
-namespace OneImlx.Drivers
+namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
-    /// An abstraction for a driven entity.
+    /// Manages <see cref="Equipment"/>.
     /// </summary>
-    /// <seealso cref="IDriver"/>
-    public interface IDriven : IId, IName, IDescription
+    public sealed class EquipmentManager : HardwareManager<Equipment>
     {
     }
 }

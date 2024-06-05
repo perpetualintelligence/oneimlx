@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Network", "src\OneI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Network.Tests", "test\OneImlx.Network.Tests\OneImlx.Network.Tests.csproj", "{349DB040-DA5C-4D01-A4A3-73A027796694}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneImlx.Drivers", "src\OneImlx.Drivers\OneImlx.Drivers.csproj", "{18B1907E-BCFA-4E55-A445-50296DB7B56E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Drivers", "src\OneImlx.Drivers\OneImlx.Drivers.csproj", "{18B1907E-BCFA-4E55-A445-50296DB7B56E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneImlx.Drivers.Tests", "test\OneImlx.Drivers.Tests\OneImlx.Drivers.Tests.csproj", "{344BBA86-D3ED-4DB4-A507-45D461D229AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{18B1907E-BCFA-4E55-A445-50296DB7B56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18B1907E-BCFA-4E55-A445-50296DB7B56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18B1907E-BCFA-4E55-A445-50296DB7B56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344BBA86-D3ED-4DB4-A507-45D461D229AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344BBA86-D3ED-4DB4-A507-45D461D229AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344BBA86-D3ED-4DB4-A507-45D461D229AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344BBA86-D3ED-4DB4-A507-45D461D229AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{0AB2BFA0-C2BA-4C74-B21B-52F875EC6C2D} = {4C83B255-59A1-4BC5-8C40-E79CD843F38B}
 		{349DB040-DA5C-4D01-A4A3-73A027796694} = {57ADE862-CE1D-4973-A0D1-B362E1CAB5A2}
 		{18B1907E-BCFA-4E55-A445-50296DB7B56E} = {4C83B255-59A1-4BC5-8C40-E79CD843F38B}
+		{344BBA86-D3ED-4DB4-A507-45D461D229AC} = {57ADE862-CE1D-4973-A0D1-B362E1CAB5A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8756568-1C46-4694-9376-03B7BB06C0C8}

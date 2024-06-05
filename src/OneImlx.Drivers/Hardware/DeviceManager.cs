@@ -7,13 +7,12 @@
 
 using System;
 
-namespace OneImlx.Drivers
+namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
-    /// An abstraction for a driven entity.
+    /// Manages <see cref="Device"/>.
     /// </summary>
-    /// <seealso cref="IDriver"/>
-    public interface IDriven : IId, IName, IDescription
+    public sealed class DeviceManager : HardwareManager<Device>
     {
     }
 }

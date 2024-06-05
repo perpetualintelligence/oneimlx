@@ -5,15 +5,12 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System;
-
 namespace OneImlx.Drivers
 {
     /// <summary>
-    /// An abstraction for a driven entity.
+    /// An abstraction for firmware that runs on hardware components.
     /// </summary>
-    /// <seealso cref="IDriver"/>
-    public interface IDriven : IId, IName, IDescription
+    public interface IFirmware : ISoftware
     {
     }
 }

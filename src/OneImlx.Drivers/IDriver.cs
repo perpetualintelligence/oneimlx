@@ -12,7 +12,7 @@ namespace OneImlx.Drivers
     /// <summary>
     /// An abstraction for a driver.
     /// </summary>
-    public interface IDriver : IDisposable, IId, IName, IDescription
+    public interface IDriver : ISoftware, IDisposable
     {
     }
 }

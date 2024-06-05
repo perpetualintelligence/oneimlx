@@ -13,10 +13,10 @@ Represents the basic abstraction for a driver, providing necessary resource mana
 Encapsulates the main action performed by the driver, allowing for different types of actions.
 
 ### IDriverLifecycle
-Manages the lifecycle of the driver, including initialization, connection, disconnection, and rendering.
+Manages the life-cycle of the driver, including initialization, connection, disconnection, and rendering.
 
 ### IDriverEvents
-Handles events that occur during the driver's lifecycle, providing hooks for custom behavior.
+Handles events that occur during the driver's life-cycle, providing hooks for custom behavior.
 
 ### IDriverConfiguration
 Enables the driver to configure itself with specific settings.
