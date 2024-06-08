@@ -5,12 +5,12 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace OneImlx.Drivers
+namespace OneImlx.Drivers.IoT
 {
     /// <summary>
-    /// An abstraction for firmware that runs on driven components.
+    /// Defines a unit for managing individual IoT device and their operations.
     /// </summary>
-    public interface IFirmware : ISoftware
+    public interface IIoTUnit
     {
     }
 }

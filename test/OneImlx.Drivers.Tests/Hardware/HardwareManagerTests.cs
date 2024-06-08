@@ -23,7 +23,7 @@ namespace OneImlx.Drivers.Tests
             hardwareMock.SetupGet(h => h.Id).Returns("hw1");
             var manager = new HardwareManager<IHardware>();
 
-            var result = manager.Add(hardwareMock.Object);
+            var result = manager.TryAdd(hardwareMock.Object);
 
             result.Should().BeTrue();
             manager.All().Should().ContainKey("hw1").WhoseValue.Should().Be(hardwareMock.Object);
@@ -38,8 +38,8 @@ namespace OneImlx.Drivers.Tests
             hardwareMock2.SetupGet(h => h.Id).Returns("hw2");
 
             var manager = new HardwareManager<IHardware>();
-            manager.Add(hardwareMock1.Object);
-            manager.Add(hardwareMock2.Object);
+            manager.TryAdd(hardwareMock1.Object);
+            manager.TryAdd(hardwareMock2.Object);
 
             var allHardware = manager.All();
 
@@ -59,7 +59,7 @@ namespace OneImlx.Drivers.Tests
                 var hardwareMock = new Mock<IHardware>();
                 hardwareMock.SetupGet(h => h.Id).Returns($"hw{i}");
                 hardwareMocks.TryAdd($"hw{i}", hardwareMock);
-                manager.Add(hardwareMock.Object);
+                manager.TryAdd(hardwareMock.Object);
             });
 
             Parallel.For(0, 1000, i =>
@@ -94,7 +94,7 @@ namespace OneImlx.Drivers.Tests
             var hardwareMock = new Mock<IHardware>();
             hardwareMock.SetupGet(h => h.Id).Returns("hw1");
             var manager = new HardwareManager<IHardware>();
-            manager.Add(hardwareMock.Object);
+            manager.TryAdd(hardwareMock.Object);
 
             var result = manager.TryGet("hw1", out var retrievedHardware);
 
@@ -119,7 +119,7 @@ namespace OneImlx.Drivers.Tests
             var hardwareMock = new Mock<IHardware>();
             hardwareMock.SetupGet(h => h.Id).Returns("hw1");
             var manager = new HardwareManager<IHardware>();
-            manager.Add(hardwareMock.Object);
+            manager.TryAdd(hardwareMock.Object);
 
             var result = manager.TryRemove("hw1", out var removedHardware);
 

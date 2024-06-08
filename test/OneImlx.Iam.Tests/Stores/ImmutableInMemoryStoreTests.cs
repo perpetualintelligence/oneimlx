@@ -20,7 +20,7 @@ namespace OneImlx.Iam
         [Fact]
         public async Task AllAsync_ShouldReturnAllEntities()
         {
-            // Arrange
+            
             var entity1Mock = new Mock<IId>();
             entity1Mock.Setup(e => e.Id).Returns("1");
 
@@ -33,39 +33,39 @@ namespace OneImlx.Iam
             var entities = new List<IId> { entity1Mock.Object, entity2Mock.Object, entity3Mock.Object };
             var store = new ImmutableInMemoryStore<IId>(entities);
 
-            // Act
+            
             var result = await store.AllAsync();
 
-            // Assert
+            
             result.Should().BeEquivalentTo(entities, options => options.WithStrictOrdering());
         }
 
         [Fact]
         public async Task AllAsync_ShouldReturnEmpty_WhenInitializedWithNoEntities()
         {
-            // Arrange
+            
             var store = new ImmutableInMemoryStore<IId>(new List<IId>());
 
-            // Act
+            
             var result = await store.AllAsync();
 
-            // Assert
+            
             result.Should().BeEmpty();
         }
 
         [Fact]
         public void Constructor_ShouldThrow_WhenEntitiesIsNull()
         {
-            // Act
+            
             var action = new Action(() => new ImmutableInMemoryStore<IId>(null!));
 
-            // Assert
+            
             action.Should().Throw<ArgumentNullException>();
         }
         [Fact]
         public void Constructor_ShouldThrow_WhenGivenDuplicateEntities()
         {
-            // Arrange
+            
             var entity1Mock = new Mock<IId>();
             entity1Mock.Setup(e => e.Id).Returns("1");
 
@@ -74,7 +74,6 @@ namespace OneImlx.Iam
 
             var entities = new List<IId> { entity1Mock.Object, entity2Mock.Object };
 
-            // Act & Assert
             Action act = () => new ImmutableInMemoryStore<IId>(entities);
             act.Should().Throw<ArgumentException>().WithMessage("An item with the same key has already been added. Key: 1");
         }
@@ -82,16 +81,16 @@ namespace OneImlx.Iam
         [Fact]
         public async Task TryFindAsync_ShouldReturnConsistentResults_AcrossMultipleCalls()
         {
-            // Arrange
+            
             var entityMock = new Mock<IId>();
             entityMock.Setup(e => e.Id).Returns("1");
             var store = new ImmutableInMemoryStore<IId>(new List<IId> { entityMock.Object });
 
-            // Act
+            
             var result1 = await store.TryFindAsync(entityMock.Object.Id);
             var result2 = await store.TryFindAsync(entityMock.Object.Id);
 
-            // Assert
+            
             result1.Found.Should().BeTrue();
             result1.Entity.Should().Be(entityMock.Object);
             result2.Found.Should().BeTrue();
@@ -101,7 +100,7 @@ namespace OneImlx.Iam
         [Fact]
         public async Task TryFindAsync_ShouldReturnCorrectEntity_WhenEntityDoesNotExists()
         {
-            // Arrange
+            
             var entity1Mock = new Mock<IId>();
             entity1Mock.Setup(e => e.Id).Returns("1");
 
@@ -114,10 +113,10 @@ namespace OneImlx.Iam
             var entities = new List<IId> { entity1Mock.Object, entity2Mock.Object, entity3Mock.Object };
             var store = new ImmutableInMemoryStore<IId>(entities);
 
-            // Act
+            
             var result = await store.TryFindAsync("unknown-id");
 
-            // Assert
+            
             result.Found.Should().BeFalse();
             result.Entity.Should().BeNull();
         }
@@ -125,7 +124,7 @@ namespace OneImlx.Iam
         [Fact]
         public async Task TryFindAsync_ShouldReturnCorrectEntity_WhenEntityExists()
         {
-            // Arrange
+            
             var entity1Mock = new Mock<IId>();
             entity1Mock.Setup(e => e.Id).Returns("1");
 
@@ -138,10 +137,10 @@ namespace OneImlx.Iam
             var entities = new List<IId> { entity1Mock.Object, entity2Mock.Object, entity3Mock.Object };
             var store = new ImmutableInMemoryStore<IId>(entities);
 
-            // Act
+            
             var result = await store.TryFindAsync(entity2Mock.Object.Id);
 
-            // Assert
+            
             result.Found.Should().BeTrue();
             result.Entity.Should().Be(entity2Mock.Object);
         }

@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright (c) 2023 Perpetual Intelligence L.L.C. All Rights Reserved.
+    Copyright 2024 (c) Perpetual Intelligence L.L.C. All Rights Reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
@@ -38,7 +38,6 @@ namespace OneImlx.Iam
         [Fact]
         public async Task Concurrent_Add_Remove_Clear_Operations_ShouldNotCauseExceptions()
         {
-            // Arrange
             var entity1Mock = new Mock<IId>();
             entity1Mock.Setup(e => e.Id).Returns("1");
 
@@ -60,7 +59,6 @@ namespace OneImlx.Iam
                 store.ClearAsync()
             };
 
-            // Act & Assert
             await Task.WhenAll(tasks);
 
             // No exceptions should be thrown during concurrent operations
@@ -69,7 +67,6 @@ namespace OneImlx.Iam
         [Fact]
         public async Task Concurrent_High_Operations_ShouldNotCauseExceptions()
         {
-            // Arrange
             const int entityCount = 1000;
             var entities = new List<IId>();
 
@@ -112,7 +109,6 @@ namespace OneImlx.Iam
                 })
             };
 
-            // Act & Assert
             await Task.WhenAll(tasks);
 
             // Verify that the remaining entities are still present
@@ -126,7 +122,6 @@ namespace OneImlx.Iam
         [Fact]
         public async Task Concurrent_Operations_ShouldNotCauseExceptions()
         {
-            // Arrange
             const int entityCount = 100;
             var entities = new List<IId>();
 
@@ -151,7 +146,6 @@ namespace OneImlx.Iam
                 store.TryFindAsync("50")
             };
 
-            // Act & Assert
             await Task.WhenAll(tasks);
 
             // No exceptions should be thrown during concurrent operations

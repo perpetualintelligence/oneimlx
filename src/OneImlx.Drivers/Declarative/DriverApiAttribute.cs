@@ -16,7 +16,7 @@ namespace OneImlx.Drivers.Declarative
     /// <param name="scope">The required scope for accessing the API.</param>
     /// <param name="role">The role required to access the API.</param>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method, AllowMultiple = true)]
-    public sealed class DriverApiAttribute(string scope, string? role = null) : Attribute
+    public class DriverApiAttribute(string scope, string? role = null) : Attribute
     {
         /// <summary>
         /// Gets or sets the role required to access the API.

@@ -5,7 +5,6 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -31,20 +30,6 @@ namespace OneImlx.Drivers.Hardware
         }
 
         /// <summary>
-        /// Adds a hardware component to the manager.
-        /// </summary>
-        /// <param name="hardware">The hardware component to add.</param>
-        /// <returns>True if the hardware component was added successfully, false otherwise.</returns>
-        /// <remarks>
-        /// This method uses <see cref="ConcurrentDictionary{TKey, TValue}.TryAdd"/> to ensure that the addition
-        /// operation is atomic and thread-safe.
-        /// </remarks>
-        public bool Add(THardware hardware)
-        {
-            return hardwareComponents.TryAdd(hardware.Id, hardware);
-        }
-
-        /// <summary>
         /// Gets the collection of hardware components as an immutable dictionary.
         /// </summary>
         /// <returns>An immutable dictionary of hardware components.</returns>
@@ -55,6 +40,20 @@ namespace OneImlx.Drivers.Hardware
         public IReadOnlyDictionary<string, THardware> All()
         {
             return hardwareComponents.ToImmutableDictionary();
+        }
+
+        /// <summary>
+        /// Adds a hardware component to the manager.
+        /// </summary>
+        /// <param name="hardware">The hardware component to add.</param>
+        /// <returns>True if the hardware component was added successfully, false otherwise.</returns>
+        /// <remarks>
+        /// This method uses <see cref="ConcurrentDictionary{TKey, TValue}.TryAdd"/> to ensure that the addition
+        /// operation is atomic and thread-safe.
+        /// </remarks>
+        public bool TryAdd(THardware hardware)
+        {
+            return hardwareComponents.TryAdd(hardware.Id, hardware);
         }
 
         /// <summary>

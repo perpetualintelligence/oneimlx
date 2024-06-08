@@ -28,5 +28,8 @@
     <ItemGroup>
       <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Rbe\" />
+    </ItemGroup>
 
 </Project>

@@ -16,7 +16,7 @@ namespace OneImlx.Drivers.Declarative
     /// <param name="issuer">The issuer URL for the OpenID Connect provider.</param>
     /// <param name="audiences">The audiences for the API, typically the API's identifiers.</param>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public sealed class DriverAttribute(string issuer, params string[] audiences) : Attribute
+    public class DriverAttribute(string issuer, params string[] audiences) : Attribute
     {
         /// <summary>
         /// Gets the audiences for the API, typically the API's identifiers.

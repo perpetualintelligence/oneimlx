@@ -18,19 +18,14 @@ namespace OneImlx.Drivers.Hardware
     /// </summary>
     /// <typeparam name="THardware">The type of hardware to manage.</typeparam>
     /// <typeparam name="TDriver">The type of drivers to manage.</typeparam>
-    public class HardwareDrivers<THardware, TDriver>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="HardwareDrivers{THardware, TDriver}"/> class.
+    /// </remarks>
+    /// <param name="driverRepository">The repository used to pull updates from a remote source.</param>
+    public class HardwareDrivers<THardware, TDriver>(IDriverRepository<THardware, TDriver> driverRepository)
         where THardware : IHardware
         where TDriver : IDriver
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HardwareDrivers{THardware, TDriver}"/> class.
-        /// </summary>
-        /// <param name="updateService">The service used to pull updates from a remote source.</param>
-        public HardwareDrivers(IDriverRepository<THardware, TDriver> updateService)
-        {
-            _driverRepository = updateService ?? throw new ArgumentNullException(nameof(updateService));
-            _hardwareDrivers = new ConcurrentDictionary<string, HardwareDriver<THardware, TDriver>>();
-        }
 
         /// <summary>
         /// Gets all hardware driver information as an enumerable collection.
@@ -95,7 +90,7 @@ namespace OneImlx.Drivers.Hardware
             return _hardwareDrivers.TryRemove(hardwareId, out hardwareDriver);
         }
 
-        private readonly IDriverRepository<THardware, TDriver> _driverRepository;
-        private readonly ConcurrentDictionary<string, HardwareDriver<THardware, TDriver>> _hardwareDrivers;
+        private readonly IDriverRepository<THardware, TDriver> _driverRepository = driverRepository ?? throw new ArgumentNullException(nameof(driverRepository));
+        private readonly ConcurrentDictionary<string, HardwareDriver<THardware, TDriver>> _hardwareDrivers = new ConcurrentDictionary<string, HardwareDriver<THardware, TDriver>>();
     }
 }

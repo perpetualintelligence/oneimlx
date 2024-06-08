@@ -21,7 +21,7 @@ namespace OneImlx.Tests
             var mockDevice = new Mock<Device>("1", "Device1", "Description1", "Manufacturer1", null);
 
             // Add a device
-            var addResult = manager.Add(mockDevice.Object);
+            var addResult = manager.TryAdd(mockDevice.Object);
             addResult.Should().BeTrue();
 
             // Verify the device is managed by DeviceManager
