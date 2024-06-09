@@ -1,6 +1,5 @@
 # oneimlx
 ![under-development](https://img.shields.io/badge/development%20status-under%20development-blue)
-![release-developed](https://img.shields.io/badge/release%20status-pre%20release%20planned%20for%20Aug%202024-brightgreen)
 [![build-test-cross](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml/badge.svg)](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml)
 
 > **Note: This is not the `OneImlx.Terminal` repository. For cross-platform terminal framework visit our [oneimlx.terminal](https://github.com/perpetualintelligence/terminal/tree/main) repo.**
