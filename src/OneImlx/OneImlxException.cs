@@ -12,16 +12,11 @@ namespace OneImlx
     /// <summary>
     /// The base <c>oneimlx</c> exception.
     /// </summary>
-    public sealed class OneImlxException : ErrorException
+    /// <remarks>Initializes a new instance of <see cref="OneImlxException"/>.</remarks>
+    /// <param name="errorCode">The error code.</param>
+    /// <param name="errorDescription">The error description.</param>
+    /// <param name="args"></param>
+    public sealed class OneImlxException(string errorCode, string errorDescription, params object?[] args) : ErrorException(errorCode, errorDescription, args)
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="OneImlxException"/>.
-        /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <param name="errorDescription">The error description.</param>
-        /// <param name="args"></param>
-        public OneImlxException(string errorCode, string errorDescription, params object?[] args) : base(errorCode, errorDescription, args)
-        {
-        }
     }
 }

@@ -8,6 +8,7 @@
 using FluentAssertions;
 using Moq;
 using OneImlx.Iam.Stores;
+using OneImlx.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;

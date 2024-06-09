@@ -20,7 +20,7 @@
     <Choose>
         <When Condition="'$(PI_CI_REFERENCE)'=='cross'">
             <ItemGroup>
-                <ProjectReference Include="..\OneImlx\OneImlx.csproj" />
+                <ProjectReference Include="..\OneImlx\OneImlx.Abstractions.csproj" />
             </ItemGroup>
         </When>
         <Otherwise>

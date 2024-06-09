@@ -18,9 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Licensing", "src\On
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Licensing.Tests", "test\OneImlx.Licensing.Tests\OneImlx.Licensing.Tests.csproj", "{E4451FC7-A241-405C-ABE4-D8BC0B47DD9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx", "src\OneImlx\OneImlx.csproj", "{EB6B1503-C431-44A0-A923-D75575635A44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Abstractions", "src\OneImlx\OneImlx.Abstractions.csproj", "{EB6B1503-C431-44A0-A923-D75575635A44}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Tests", "test\OneImlx.Tests\OneImlx.Tests.csproj", "{EC8497C0-A74B-447D-BE64-00106AAF9DB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Abstractions.Tests", "test\OneImlx.Tests\OneImlx.Abstractions.Tests.csproj", "{EC8497C0-A74B-447D-BE64-00106AAF9DB6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Iam", "src\OneImlx.Iam\OneImlx.Iam.csproj", "{903BC940-4C66-443A-BA21-D94AA794EA94}"
 EndProject

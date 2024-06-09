@@ -3,7 +3,7 @@
     <Import Project="..\..\build\props\Test.props" />
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\OneImlx\OneImlx.csproj" />
+        <ProjectReference Include="..\..\src\OneImlx\OneImlx.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

@@ -5,22 +5,24 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
+using OneImlx.Stores;
+
 namespace OneImlx.Iam.Stores
 {
     /// <summary>
-    /// Represents the result of a find operation.
+    /// Represents the result of a remove operation.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity.</typeparam>
-    public sealed class FindResult<TEntity> where TEntity : IId
+    public sealed class RemoveResult<TEntity> where TEntity : IId
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FindResult{TEntity}"/> class.
         /// </summary>
-        /// <param name="found">Whether the entity was found or not.</param>
+        /// <param name="removed">Whether the entity was removed or not.</param>
         /// <param name="entity">The found entity, or <c>null</c> if not found.</param>
-        public FindResult(bool found, TEntity? entity = default)
+        public RemoveResult(bool removed, TEntity? entity = default)
         {
-            Found = found;
+            Removed = removed;
             Entity = entity;
         }
 
@@ -30,8 +32,8 @@ namespace OneImlx.Iam.Stores
         public TEntity? Entity { get; }
 
         /// <summary>
-        /// Indicates whether the entity was found.
+        /// Indicates whether the entity was removed.
         /// </summary>
-        public bool Found { get; }
+        public bool Removed { get; }
     }
 }
