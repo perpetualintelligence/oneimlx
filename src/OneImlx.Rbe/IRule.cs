@@ -18,7 +18,7 @@ namespace OneImlx.Rbe
     public interface IRule<TContext, TResult> : IId, IName, IDescription
     {
         /// <summary>
-        /// Determines whether the rule is applicable based on the provided context.
+        /// Determines whether the rule is enabled based on the provided context.
         /// </summary>
         /// <param name="context">The context in which the rule is being evaluated.</param>
         /// <returns>True if the rule is applicable; otherwise, false.</returns>

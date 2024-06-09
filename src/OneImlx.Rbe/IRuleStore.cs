@@ -5,13 +5,18 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
+using OneImlx.Abstractions;
+using OneImlx.Abstractions.Stores;
 
 namespace OneImlx.Rbe
 {
-    internal interface IRuleStore
+    /// <summary>
+    /// Defines the interface for a rule store.
+    /// </summary>
+    /// <typeparam name="TContext">The type of the context.</typeparam>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    public interface IRuleStore<TContext, TResult> : IMutableStore<IRule<TContext, TResult>> where TContext : class, IId
     {
     }
 }
