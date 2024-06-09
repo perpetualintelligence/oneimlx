@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright (c) 2023 Perpetual Intelligence L.L.C. All Rights Reserved.
+    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
@@ -20,24 +20,23 @@ namespace OneImlx.Iam.Stores
     /// <remarks>
     /// <para>Performance Note:</para>
     /// <para>
-    /// For optimal performance, it is recommended that entity <see cref="IId.Id"/> is kept as short as possible
-    /// (e.g., 2 or 3 characters) because the store relies on these IDs for quick and efficient lookups.
-    /// In many cases, permissions and roles in IAM systems can have finite and predefined IDs,
-    /// and optimizing them for efficient access control is a common practice.
+    /// For optimal performance, it is recommended that entity <see cref="IId.Id"/> is kept as short as possible (e.g.,
+    /// 2 or 3 characters) because the store relies on these IDs for quick and efficient lookups. In many cases,
+    /// permissions and roles in IAM systems can have finite and predefined IDs, and optimizing them for efficient
+    /// access control is a common practice.
     /// </para>
     /// <para>Concurrency Note:</para>
     /// <para>
     /// The store is designed to handle concurrent read and write operations efficiently using a
-    /// <see cref="ConcurrentDictionary{TKey, TValue}"/>. However, it's essential to be aware of
-    /// potential race conditions in specific compound operations. Care should be taken when
-    /// combining multiple operations to ensure atomicity and consistency.
+    /// <see cref="ConcurrentDictionary{TKey, TValue}"/>. However, it's essential to be aware of potential race
+    /// conditions in specific compound operations. Care should be taken when combining multiple operations to ensure
+    /// atomicity and consistency.
     /// </para>
     /// </remarks>
     public class MutableInMemoryStore<TEntity> : IMutableStore<TEntity> where TEntity : IId
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MutableInMemoryStore{TEntity}"/> class
-        /// with the provided entities.
+        /// Initializes a new instance of the <see cref="MutableInMemoryStore{TEntity}"/> class with the provided entities.
         /// </summary>
         /// <param name="entities">The initial entities for the store.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="entities"/> is null.</exception>

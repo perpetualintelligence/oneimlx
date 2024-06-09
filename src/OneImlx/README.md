@@ -1,3 +1,3 @@
 # OneImlx
 
-The shared package.
+The shared components for `OneImlx` framework packages.

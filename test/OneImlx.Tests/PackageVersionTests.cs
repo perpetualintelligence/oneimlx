@@ -31,26 +31,6 @@ namespace OneImlx.Tests
         }
 
         [Fact]
-        public void ToString_ReturnsCorrectFormatWithoutSuffix()
-        {
-            var version = new PackageVersion(1, 0, 0);
-
-            var result = version.ToString();
-
-            result.Should().Be("1.0.0");
-        }
-
-        [Fact]
-        public void ToString_ReturnsCorrectFormatWithSuffix()
-        {
-            var version = new PackageVersion(1, 0, 0, "beta.123");
-
-            var result = version.ToString();
-
-            result.Should().Be("1.0.0-beta.123");
-        }
-
-        [Fact]
         public void Parse_ParsesVersionWithoutSuffixCorrectly()
         {
             var versionString = "1.2.3";
@@ -94,6 +74,26 @@ namespace OneImlx.Tests
 
             act1.Should().Throw<ArgumentException>().WithMessage("Version string cannot be null or empty.*");
             act2.Should().Throw<ArgumentException>().WithMessage("Version string cannot be null or empty.*");
+        }
+
+        [Fact]
+        public void ToString_ReturnsCorrectFormatWithoutSuffix()
+        {
+            var version = new PackageVersion(1, 0, 0);
+
+            var result = version.ToString();
+
+            result.Should().Be("1.0.0");
+        }
+
+        [Fact]
+        public void ToString_ReturnsCorrectFormatWithSuffix()
+        {
+            var version = new PackageVersion(1, 0, 0, "beta.123");
+
+            var result = version.ToString();
+
+            result.Should().Be("1.0.0-beta.123");
         }
     }
 }

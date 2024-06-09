@@ -5,7 +5,7 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
         <Description>
-            The most flexible cross-platform framework for IAM and licensing.
+            The shared components for all `OneImlx` framework packages.
         </Description>
         <PackageTags>oneimlx</PackageTags>
     </PropertyGroup>
@@ -13,7 +13,21 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
       <PackageReference Include="Microsoft.IdentityModel.Abstractions" Version="7.6.0" />
-      <PackageReference Include="OneImlx.Shared" Version="5.8.8" />
     </ItemGroup>
 
+    <!--
+        CI CONFIG:
+    -->
+    <Choose>
+        <When Condition="'$(PI_CI_REFERENCE)'=='cross'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\..\shared\src\OneImlx.Shared\OneImlx.Shared.csproj" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <PackageReference Include="OneImlx.Shared" Version="5.8.8" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
 </Project>

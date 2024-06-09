@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright (c) 2023 Perpetual Intelligence L.L.C. All Rights Reserved.
+    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
@@ -12,16 +12,20 @@ using System.Security.Claims;
 namespace OneImlx.Licensing
 {
     /// <summary>
-    /// Represents a claims-based <see cref="ILicenseIdentity"/>. Equality of instances of <see cref="LicenseClaimsIdentity"/> is determined solely based on the <see cref="Id"/> property.
-    /// This design choice enhances performance, especially when numerous identities request access to a resource.
+    /// Represents a claims-based <see cref="ILicenseIdentity"/>. Equality of instances of
+    /// <see cref="LicenseClaimsIdentity"/> is determined solely based on the <see cref="Id"/> property. This design
+    /// choice enhances performance, especially when numerous identities request access to a resource.
     /// </summary>
     /// <remarks>
-    /// The <see cref="LicenseClaimsIdentity"/> class is a concrete implementation of a claims-based identity; that is, an identity described by a collection of license claims.
-    /// A <see cref="Claim"/> is a statement about an entity made by an issuer that describes a property, right, or some other quality of that entity.
-    /// Such an entity is said to be the subject of the <see cref="Claim"/>. The license claims contained in a <see cref="LicenseClaimsIdentity"/> describe the entity
-    /// that the corresponding identity represents, and can be used to make authorization and authentication decisions. A claims-based access model has many advantages
-    /// over more traditional access models that rely exclusively on roles. For example, claims can provide much richer information about the <see cref="LicenseClaimsIdentity"/> they represent
-    /// and can be evaluated for authorization or authentication in a far more specific manner.
+    /// The <see cref="LicenseClaimsIdentity"/> class is a concrete implementation of a claims-based identity; that is,
+    /// an identity described by a collection of license claims. A <see cref="Claim"/> is a statement about an entity
+    /// made by an issuer that describes a property, right, or some other quality of that entity. Such an entity is said
+    /// to be the subject of the <see cref="Claim"/>. The license claims contained in a
+    /// <see cref="LicenseClaimsIdentity"/> describe the entity that the corresponding identity represents, and can be
+    /// used to make authorization and authentication decisions. A claims-based access model has many advantages over
+    /// more traditional access models that rely exclusively on roles. For example, claims can provide much richer
+    /// information about the <see cref="LicenseClaimsIdentity"/> they represent and can be evaluated for authorization
+    /// or authentication in a far more specific manner.
     /// </remarks>
     public sealed class LicenseClaimsIdentity : ClaimsIdentity, ILicenseIdentity, IEquatable<LicenseClaimsIdentity?>
     {
@@ -35,7 +39,7 @@ namespace OneImlx.Licensing
             string id,
             string authenticationType,
             IEnumerable<Claim> claims
-            ) : base(claims, authenticationType)
+                                    ) : base(claims, authenticationType)
         {
             Id = id;
         }
@@ -54,6 +58,7 @@ namespace OneImlx.Licensing
         /// Gets or sets custom properties associated with the identity.
         /// </summary>
         public IDictionary<string, object>? Properties { get; set; }
+
         /// <summary>
         /// Gets or sets tags associated with the identity.
         /// </summary>

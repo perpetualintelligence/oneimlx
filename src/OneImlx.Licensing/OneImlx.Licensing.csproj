@@ -5,7 +5,7 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
         <Description>
-            The most flexible cross-platform framework for IAM and licensing.
+            The most flexible cross-platform framework for licensing.
         </Description>
         <PackageTags>oneimlx</PackageTags>
     </PropertyGroup>

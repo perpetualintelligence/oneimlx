@@ -5,10 +5,14 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
         <Description>
-            The most flexible cross-platform framework for drivers.
+            The most flexible cross-platform framework for building IoT enabled device  drivers.
         </Description>
         <PackageTags>oneimlx</PackageTags>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+    </ItemGroup>
 
     <!--
         CI CONFIG:
@@ -25,11 +29,4 @@
             </ItemGroup>
         </Otherwise>
     </Choose>
-    <ItemGroup>
-      <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Rbe\" />
-    </ItemGroup>
-
 </Project>

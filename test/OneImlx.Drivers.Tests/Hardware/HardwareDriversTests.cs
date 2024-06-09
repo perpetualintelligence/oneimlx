@@ -5,12 +5,12 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using OneImlx.Drivers;
 using OneImlx.Drivers.Hardware;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace OneImlx.Tests

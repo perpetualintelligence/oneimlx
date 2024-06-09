@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright (c) 2023 Perpetual Intelligence L.L.C. All Rights Reserved.
+    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
@@ -12,9 +12,7 @@ namespace OneImlx.Licensing
     /// <summary>
     /// Represents resources that can be licensed.
     /// </summary>
-    /// <remarks>
-    ///
-    /// </remarks>
+    /// <remarks></remarks>
     public class LicenseResource : ILicenseResource
     {
         /// <summary>
@@ -49,10 +47,12 @@ namespace OneImlx.Licensing
         /// The resource name.
         /// </summary>
         public string Name { get; }
+
         /// <summary>
         /// The resource properties.
         /// </summary>
         public IDictionary<string, object>? Properties { get; set; }
+
         /// <summary>
         /// The resource tags.
         /// </summary>

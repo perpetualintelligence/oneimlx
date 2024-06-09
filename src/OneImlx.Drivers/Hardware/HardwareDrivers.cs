@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright 2024 (c) Perpetual Intelligence L.L.C. All Rights Reserved.
+    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
@@ -18,15 +18,12 @@ namespace OneImlx.Drivers.Hardware
     /// </summary>
     /// <typeparam name="THardware">The type of hardware to manage.</typeparam>
     /// <typeparam name="TDriver">The type of drivers to manage.</typeparam>
-    /// <remarks>
-    /// Initializes a new instance of the <see cref="HardwareDrivers{THardware, TDriver}"/> class.
-    /// </remarks>
+    /// <remarks>Initializes a new instance of the <see cref="HardwareDrivers{THardware, TDriver}"/> class.</remarks>
     /// <param name="driverRepository">The repository used to pull updates from a remote source.</param>
     public class HardwareDrivers<THardware, TDriver>(IDriverRepository<THardware, TDriver> driverRepository)
         where THardware : IHardware
         where TDriver : IDriver
     {
-
         /// <summary>
         /// Gets all hardware driver information as an enumerable collection.
         /// </summary>
