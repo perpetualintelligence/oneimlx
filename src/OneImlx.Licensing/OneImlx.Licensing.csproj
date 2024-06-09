@@ -20,12 +20,12 @@
     <Choose>
         <When Condition="'$(PI_CI_REFERENCE)'=='cross'">
             <ItemGroup>
-                <ProjectReference Include="..\OneImlx\OneImlx.Abstractions.csproj" />
+                <ProjectReference Include="..\OneImlx.Abstractions\OneImlx.Abstractions.csproj" />
             </ItemGroup>
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="OneImlx" Version="$(PI_CI_PACKAGE_VERSION)" />
+                <PackageReference Include="OneImlx.Abstractions" Version="$(PI_CI_PACKAGE_VERSION)" />
             </ItemGroup>
         </Otherwise>
     </Choose>

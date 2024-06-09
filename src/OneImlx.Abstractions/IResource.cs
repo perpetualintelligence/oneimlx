@@ -5,14 +5,13 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using OneImlx.Abstractions;
-
-namespace OneImlx.Network
+namespace OneImlx.Abstractions
 {
     /// <summary>
-    /// An abstraction of a network session.
+    /// Defines a target for the permissions.
     /// </summary>
-    public interface ISession : IName, IId, IDescription
+    /// <remarks>The <see cref="IResource"/> remains indifferent to access mechanisms.</remarks>
+    public interface IResource : IId, IName, IDescription
     {
     }
 }

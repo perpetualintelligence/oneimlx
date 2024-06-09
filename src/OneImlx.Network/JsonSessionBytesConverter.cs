@@ -6,6 +6,7 @@
 */
 
 using System.Text.Json;
+using OneImlx.Abstractions;
 
 namespace OneImlx.Network
 {

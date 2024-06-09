@@ -5,6 +5,8 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
+using OneImlx.Abstractions;
+
 namespace OneImlx.Drivers
 {
     /// <summary>

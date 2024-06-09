@@ -5,14 +5,16 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using OneImlx.Abstractions;
-
-namespace OneImlx.Network
+namespace OneImlx.Abstractions
 {
     /// <summary>
-    /// An abstraction of a network session.
+    /// Defines an interface for objects that have a unique identifier.
     /// </summary>
-    public interface ISession : IName, IId, IDescription
+    public interface IId
     {
+        /// <summary>
+        /// Gets the unique identifier for the object.
+        /// </summary>
+        string Id { get; }
     }
 }

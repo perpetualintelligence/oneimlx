@@ -5,14 +5,12 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using OneImlx.Abstractions;
-
-namespace OneImlx.Network
+namespace OneImlx.Abstractions.Configuration.Licensing
 {
     /// <summary>
-    /// An abstraction of a network session.
+    /// An abstraction of licensing configuration options.
     /// </summary>
-    public interface ISession : IName, IId, IDescription
+    public sealed class LicensingOptions
     {
     }
 }

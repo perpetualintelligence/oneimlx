@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OneImlx.Network.Tests
+namespace OneImlx.Network
 {
     public class TcpSessionTests
     {

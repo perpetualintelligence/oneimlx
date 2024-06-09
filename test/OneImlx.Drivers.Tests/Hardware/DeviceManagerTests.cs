@@ -7,10 +7,9 @@
 
 using FluentAssertions;
 using Moq;
-using OneImlx.Drivers.Hardware;
 using Xunit;
 
-namespace OneImlx.Tests
+namespace OneImlx.Drivers.Hardware
 {
     public class DeviceManagerTests
     {

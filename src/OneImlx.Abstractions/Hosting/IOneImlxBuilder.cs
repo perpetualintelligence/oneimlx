@@ -5,23 +5,21 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using OneImlx.Abstractions;
-
-namespace OneImlx.Drivers
+namespace OneImlx.Abstractions.Hosting
 {
     /// <summary>
-    /// An abstraction for software.
+    /// An abstraction of <c>oneimlx</c> service builder.
     /// </summary>
-    public interface ISoftware : IId, IName, IDescription
+    public interface IOneImlxBuilder
     {
         /// <summary>
-        /// Gets the publisher of the software component.
+        /// The IAM service builder.
         /// </summary>
-        string PublisherId { get; }
+        IIamBuilder Iam { get; }
 
         /// <summary>
-        /// Gets the version of the software component.
+        /// The licensing service builder.
         /// </summary>
-        IVersion Version { get; }
+        ILicensingBuilder Licensing { get; }
     }
 }

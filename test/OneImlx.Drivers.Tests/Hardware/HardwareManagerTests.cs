@@ -7,12 +7,11 @@
 
 using FluentAssertions;
 using Moq;
-using OneImlx.Drivers.Hardware;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OneImlx.Drivers.Tests
+namespace OneImlx.Drivers.Hardware
 {
     public class HardwareManagerTests
     {

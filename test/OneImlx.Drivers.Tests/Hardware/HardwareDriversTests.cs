@@ -8,12 +8,11 @@
 using FluentAssertions;
 using Moq;
 using OneImlx.Drivers;
-using OneImlx.Drivers.Hardware;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OneImlx.Tests
+namespace OneImlx.Drivers.Hardware
 {
     public class HardwareDriversTests
     {

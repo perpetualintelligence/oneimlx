@@ -6,6 +6,7 @@
 */
 
 using System.Security.Principal;
+using OneImlx.Abstractions;
 
 namespace OneImlx.Licensing
 {

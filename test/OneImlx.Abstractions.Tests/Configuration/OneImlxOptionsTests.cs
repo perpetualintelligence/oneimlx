@@ -6,18 +6,16 @@
 */
 
 using FluentAssertions;
-using OneImlx.Abstractions.Configuration;
 using Xunit;
 
-namespace OneImlx.Iam.Configuration
+namespace OneImlx.Abstractions.Configuration
 {
     public class OneImlxOptionsTests
     {
         [Fact]
-        public void Options_Initialized()
+        public void OneImlx_Initializes_Correctly()
         {
             var options = new OneImlxOptions();
-            options.Iam.Should().NotBeNull();
             options.Licensing.Should().NotBeNull();
         }
     }
