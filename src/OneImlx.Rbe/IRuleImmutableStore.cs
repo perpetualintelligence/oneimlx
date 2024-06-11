@@ -12,11 +12,11 @@ using OneImlx.Abstractions.Stores;
 namespace OneImlx.Rbe
 {
     /// <summary>
-    /// Defines the interface for a rule store.
+    /// Defines the interface for an immutable rule store.
     /// </summary>
     /// <typeparam name="TContext">The type of the context.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public interface IRuleStore<TContext, TResult> : IMutableStore<IRule<TContext, TResult>> where TContext : class, IId
+    public interface IRuleImmutableStore<TContext, TResult> : IImmutableStore<IRule<TContext, TResult>> where TContext : class, IId
     {
     }
 }
