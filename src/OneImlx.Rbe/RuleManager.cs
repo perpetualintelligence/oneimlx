@@ -22,7 +22,7 @@ namespace OneImlx.Rbe
         /// Initializes a new instance of the <see cref="RuleManager{TContext, TResult}"/> class.
         /// </summary>
         /// <param name="ruleStore">The rule store.</param>
-        public RuleManager(IRuleStore<TContext, TResult> ruleStore)
+        public RuleManager(IRuleMutableStore<TContext, TResult> ruleStore)
         {
             _ruleStore = ruleStore;
         }
@@ -47,6 +47,6 @@ namespace OneImlx.Rbe
             return results;
         }
 
-        private readonly IRuleStore<TContext, TResult> _ruleStore;
+        private readonly IRuleMutableStore<TContext, TResult> _ruleStore;
     }
 }
