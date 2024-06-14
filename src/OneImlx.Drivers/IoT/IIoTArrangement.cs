@@ -8,9 +8,13 @@
 namespace OneImlx.Drivers.IoT
 {
     /// <summary>
-    /// Defines a slot for managing IoT units and their operations.
+    /// Defines a spacial arrangement of multiple <seealso cref="IIoTUnit"/> and their operations.
     /// </summary>
-    public interface IIoTSlot
+    public interface IIoTArrangement
     {
+        /// <summary>
+        /// The system this arrangement is part of.
+        /// </summary>
+        IIoTSystem System { get; }
     }
 }

@@ -5,16 +5,19 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace OneImlx.Drivers.IoT
+using System;
+using System.Collections.Generic;
+
+namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
-    /// Defines a cell for managing multiple <see cref="IIoTSystem"/> and their operations.
+    /// An abstraction of a hardware device driven by a driver.
     /// </summary>
-    public interface IIoTCell
+    public interface IDevice : IHardware, IDisposable
     {
         /// <summary>
-        /// The facility this cell is part of.
+        /// The device metadata.
         /// </summary>
-        IIoTFacility Facility { get; }
+        Dictionary<string, object>? Metadata { get; }
     }
 }

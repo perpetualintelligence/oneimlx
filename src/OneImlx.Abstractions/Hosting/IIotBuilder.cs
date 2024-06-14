@@ -5,16 +5,18 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace OneImlx.Drivers.IoT
+using Microsoft.Extensions.DependencyInjection;
+
+namespace OneImlx.Abstractions.Hosting
 {
     /// <summary>
-    /// Defines a cell for managing multiple <see cref="IIoTSystem"/> and their operations.
+    /// An abstraction of <c>oneimlx</c> IoT service builder.
     /// </summary>
-    public interface IIoTCell
+    public interface IIoTBuilder
     {
         /// <summary>
-        /// The facility this cell is part of.
+        /// The host service collection.
         /// </summary>
-        IIoTFacility Facility { get; }
+        IServiceCollection Services { get; }
     }
 }

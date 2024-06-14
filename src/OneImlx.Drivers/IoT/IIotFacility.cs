@@ -8,7 +8,7 @@
 namespace OneImlx.Drivers.IoT
 {
     /// <summary>
-    /// Defines a facility for managing IoT cells and their operations.
+    /// Defines a facility for managing multiple <see cref="IIoTCell"/> and their operations.
     /// </summary>
     public interface IIoTFacility
     {

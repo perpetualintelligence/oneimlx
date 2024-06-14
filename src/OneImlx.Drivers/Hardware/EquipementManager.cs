@@ -8,9 +8,9 @@
 namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
-    /// Manages <see cref="Equipment"/>.
+    /// Manages <see cref="IEquipment"/>.
     /// </summary>
-    public sealed class EquipmentManager : HardwareManager<Equipment>
+    public sealed class EquipmentManager : HardwareManager<IEquipment>
     {
     }
 }

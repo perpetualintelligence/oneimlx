@@ -8,9 +8,13 @@
 namespace OneImlx.Drivers.IoT
 {
     /// <summary>
-    /// Defines a unit for managing individual IoT device and their operations.
+    /// Defines a logical unit for managing individual IoT device and their operations.
     /// </summary>
     public interface IIoTUnit
     {
+        /// <summary>
+        /// The arrangement this unit is part of.
+        /// </summary>
+        IIoTArrangement Arrangement { get; }
     }
 }
