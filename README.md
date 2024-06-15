@@ -1,42 +1,86 @@
-# oneimlx
-![under-development](https://img.shields.io/badge/development%20status-under%20development-blue)
+# OneImlx
+![under-development](https://img.shields.io/badge/development--status-under%20development-blue)
 [![build-test-cross](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml/badge.svg)](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml)
 
-> **Note: This is not the `OneImlx.Terminal` repository. For cross-platform terminal framework visit our [oneimlx.terminal](https://github.com/perpetualintelligence/terminal/tree/main) repo.**
+The `OneImlx` is a cross-platform framework designed to address various needs across multiple industries. It provides a robust infrastructure for developing and managing drivers, hardware interactions, job management, access management, licensing, networking, and more. The framework is modular, allowing for the integration of different components as needed.
 
-## Introduction
+## OneImlx.Abstractions
 
-`OneImlx` is a unified claims-based framework for managing both identity-related authorizations and licensing entitlements. At its core, it addresses two pivotal questions: **what** actions or operations can a user or entity perform (i.e., "can-do") and **what** are they licensed for (i.e., "has-license-for").
+The `OneImlx.Abstractions` module contains common, shared code that serves as the foundation for the entire OneImlx Framework. This module includes essential abstractions, interfaces, and utility classes that are used across different parts of the framework.
 
-## Guiding Principles
+### Key Features
+- **Common Interfaces**: Shared interfaces that standardize the behavior of various components.
+- **Utility Classes**: Helper classes that provide common functionality used throughout the framework.
 
-### 1. Authorization
-- **`who` -> `can-do` -> `what`**: After identifying a user or entity, `OneImlx` determines the specific actions or operations they are authorized to perform.
+## OneImlx.Iam
 
-### 2. Licensing
-- **`who` -> `has-license-for` -> `what`**: This principle checks and confirms the licenses associated with a user or entity, ensuring they access or use only what they are licensed for.
+The `OneImlx.Iam` module is a cross-platform multi-tenant access management framework that is agnostic to any specific identity solution. It provides a robust and flexible system for managing access across different tenants and platforms.
 
-By harmoniously converging IAM with Licensing, `OneImlx` provides a comprehensive framework that ensures both security and compliance, without unnecessary complexity.
+### Key Features
+- **Cross-Platform**: Supports multiple platforms for broad applicability.
+- **Multi-Tenant**: Designed to manage access across multiple tenants.
+- **Identity Solution Agnostic**: Can be integrated with various identity solutions without being tied to any specific one.
+- **Access Management**: Comprehensive tools for managing access control and permissions.
 
-## Terminology
-- **who**: Refers to the user or entity being evaluated. In a claims-based context, it represents the claim subject.
-- **can-do**: Indicates the permissible actions or operations that the identified user or entity is authorized to perform, derived from their assigned claims.
-- **has-license-for**: Addresses the entitlements or licenses associated with a user or entity.
-- **what**: Represents the end resource, service, or product that the "who" wishes to access or interact with.
+## OneImlx.Drivers
 
-## Cross-Platform 
-`OneImlx` is designed to be inherently cross-platform, ensuring functionality across Windows, Linux, macOS, and other platforms. This flexibility guarantees wide applicability, regardless of platform preference.
+The `OneImlx.Drivers` module provides a robust infrastructure for developing and managing drivers for hardware, IoT devices, and semiconductors. It is designed to be flexible and extensible, making it suitable for various other industries as well.
 
-## Deployment Agnostic
-Whether deployed on-premises, in a hybrid setting, or cloud-native, `OneImlx`'s deployment-agnostic nature assures consistent functionality, scalability, and adaptability across various infrastructure models.
+### Key Features
+- **Driver Management**: Interfaces and classes for managing the lifecycle of drivers.
+- **Hardware Interaction**: Abstractions for interacting with hardware components.
+- **IoT and Semiconductor Support**: Specialized support for IoT devices and semiconductor components.
+- **Extensibility**: Can be extended to support additional industries and use cases.
 
-## What It Is Not
-While `OneImlx` offers a layer for access, permission management, and licensing, it is not designed for authentication. For that foundational block in the security landscape, well-established solutions exist:
-- **Duende IdentityServer**: A commercial OpenID Connect and OAuth 2.0 framework for ASP.NET Core, succeeding IdentityServer.
-- **MSAL (Microsoft Authentication Library)**: Consistent authentication for any Microsoft identity.
-- **Google Auth**: A robust identity solution facilitating quick user authentication to apps.
-- **AWS Cognito**: Amazon's authentication solution controlling user access to AWS resources.
-- **Azure RBAC**: Microsoft Azure's Role-Based Access Control system for fine-grained access management of Azure resources.
+## OneImlx.Jobs
+
+The `OneImlx.Jobs` module is focused on high-performance job management. It provides the necessary interfaces and structures to manage and execute jobs and workloads efficiently.
+
+### Key Features
+- **Job Management**: Interfaces for defining and managing jobs.
+- **Workload Management**: Structures for grouping and managing multiple jobs as workloads.
+- **Scheduling**: Support for scheduling workloads for execution.
+- **Diagnostics**: Tools for monitoring and diagnosing job and workload execution.
+
+## OneImlx.Licensing
+
+The `OneImlx.Licensing` module is a cross-platform claim-based modern licensing framework. It provides a flexible and secure system for managing software licenses using claim-based access control.
+
+### Key Features
+- **Cross-Platform**: Supports multiple platforms for broad applicability.
+- **Claim-Based**: Utilizes claim-based access control for modern and flexible licensing.
+- **Secure Licensing**: Ensures secure management of software licenses.
+- **Extensible**: Can be extended to fit various licensing models and requirements.
+
+## OneImlx.Network
+
+The `OneImlx.Network` module provides a network-agnostic session management framework for applications and services that are agnostic to network protocols. It enables efficient and flexible session management across various network environments.
+
+### Key Features
+- **Network-Agnostic**: Designed to work with multiple network protocols without being tied to any specific one.
+- **Session Management**: Provides robust tools for managing sessions in networked applications and services.
+- **Flexible Integration**: Can be integrated into various applications and services to manage sessions effectively.
+- **Scalable**: Supports scalable session management for high-performance applications.
+
+## OneImlx.Rbe
+
+The `OneImlx.Rbe` module is a cross-platform rule-based engineering framework designed to configure and manage rules within your applications and services. It provides a robust and flexible system for defining, executing, and managing business rules across different platforms.
+
+### Key Features
+- **Cross-Platform**: Supports multiple platforms for broad applicability.
+- **Rule-Based Engineering**: Allows for the configuration and management of business rules within applications and services.
+- **Flexible Rule Management**: Provides tools for defining, executing, and managing rules efficiently.
+- **Extensible**: Can be extended to support various rule-based scenarios and use cases.
+
+## OneImlx.Terminal
+
+The `OneImlx.Terminal` module is a cross-platform terminal framework. It provides the infrastructure to create and manage terminal-based applications, supporting multiple platforms seamlessly.
+
+### Key Features
+- **Cross-Platform**: Works across Windows, Linux, and macOS.
+- **Terminal Management**: Tools for creating and managing terminal applications.
+- **Extensible**: Can be extended to fit various terminal-based use cases.
+- **Flexible Integration**: Easy integration with other modules and systems.
 
 ## Feedback
 Your feedback helps shape `OneImlx`. For suggestions, issues, or queries, please visit our [GitHub Repository Issues section](https://github.com/PerpetualIntelligence/OneImlx/issues).
