@@ -16,7 +16,7 @@ namespace OneImlx.Rbe
     /// </summary>
     /// <typeparam name="TContext">The type of the context.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public interface IRuleImmutableStore<TContext, TResult> : IImmutableStore<IRule<TContext, TResult>> where TContext : class, IId
+    public interface IRuleStore<TContext, TResult> : IMutableStore<IRule<TContext, TResult>>, IImmutableStore<IRule<TContext, TResult>> where TContext : class, IId
     {
     }
 }

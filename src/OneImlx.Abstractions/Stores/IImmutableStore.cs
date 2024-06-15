@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace OneImlx.Abstractions.Stores
 {
     /// <summary>
-    /// Represents an immutable store for <c>IAM</c> entities.
+    /// Represents an immutable store of entities.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity this store manages.</typeparam>
     public interface IImmutableStore<TEntity> where TEntity : IId

@@ -16,16 +16,12 @@ namespace OneImlx.Rbe
     /// </summary>
     /// <typeparam name="TContext">The type of the context.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public class RuleManager<TContext, TResult> : IRuleManager<TContext, TResult> where TContext : class, IId
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="RuleManager{TContext, TResult}"/> class.
+    /// </remarks>
+    /// <param name="ruleStore">The rule store.</param>
+    public class RuleManager<TContext, TResult>(IRuleStore<TContext, TResult> ruleStore) : IRuleManager<TContext, TResult> where TContext : class, IId
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RuleManager{TContext, TResult}"/> class.
-        /// </summary>
-        /// <param name="ruleStore">The rule store.</param>
-        public RuleManager(IRuleMutableStore<TContext, TResult> ruleStore)
-        {
-            _ruleStore = ruleStore;
-        }
 
         /// <summary>
         /// Processes all applicable rules based on the provided context.
@@ -47,6 +43,6 @@ namespace OneImlx.Rbe
             return results;
         }
 
-        private readonly IRuleMutableStore<TContext, TResult> _ruleStore;
+        private readonly IRuleStore<TContext, TResult> _ruleStore = ruleStore;
     }
 }
