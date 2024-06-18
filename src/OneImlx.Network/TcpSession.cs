@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using OneImlx.Abstractions;
 
 namespace OneImlx.Network
 {
@@ -61,7 +62,6 @@ namespace OneImlx.Network
             Description = description;
             IpAddress = ipAddress;
             Port = port;
-            _client = new TcpClient();
             _dataConverter = dataConverter;
             _resultConverter = resultConverter;
             EndOfMessage = endOfMessage; // Default end-of-message marker
@@ -108,6 +108,8 @@ namespace OneImlx.Network
         /// <returns>A task representing the asynchronous connect operation.</returns>
         public async Task ConnectAsync()
         {
+            _client ??= new TcpClient();
+
             if (Hostname != null)
             {
                 await _client.ConnectAsync(Hostname, Port);
@@ -118,7 +120,7 @@ namespace OneImlx.Network
             }
             else
             {
-                throw new InvalidOperationException("Host or IP address must be set.");
+                throw new OneImlxException("invalid_request", "Host or IP address must be set.");
             }
         }
 
@@ -128,7 +130,9 @@ namespace OneImlx.Network
         /// <returns>A task representing the asynchronous disconnect operation.</returns>
         public async Task DisconnectAsync()
         {
-            _client.Close();
+            _client?.Close();
+            _client = null;
+            _leftoverData.Clear();
             await Task.CompletedTask;
         }
 
@@ -138,7 +142,18 @@ namespace OneImlx.Network
         /// <returns>A task representing the asynchronous read operation, with the received data as a stream.</returns>
         public Stream GetStream()
         {
-            return _client.GetStream();
+            ThrowIfTcpClientIsNull();
+            return _client!.GetStream();
+        }
+
+        /// <summary>
+        /// Determines if this TCP session is connected to the remote host.
+        /// </summary>
+        /// <returns></returns>
+        public Task<bool> IsConnectedAsync()
+        {
+            bool result = _client?.Connected ?? false;
+            return Task.FromResult(result);
         }
 
         /// <summary>
@@ -147,7 +162,8 @@ namespace OneImlx.Network
         /// <returns>A task representing the asynchronous receive operation, with the received data as TResult.</returns>
         public async Task<TResult> ReceiveAsync()
         {
-            var stream = _client.GetStream();
+            ThrowIfTcpClientIsNull();
+            var stream = _client!.GetStream();
             byte[] buffer = new byte[1024];
             int bytesRead;
             StringBuilder responseBuilder = new(_leftoverData.ToString());
@@ -183,13 +199,28 @@ namespace OneImlx.Network
         }
 
         /// <summary>
+        /// Resets the client connection by disconnecting and reconnecting the connection to the remote host.
+        /// </summary>
+        public async Task ResetAsync()
+        {
+            if (await IsConnectedAsync())
+            {
+                _leftoverData.Clear();
+                await DisconnectAsync();
+            }
+
+            await ConnectAsync();
+        }
+
+        /// <summary>
         /// Sends data asynchronously.
         /// </summary>
         /// <param name="data">The data to send.</param>
         /// <returns>A task representing the asynchronous send operation.</returns>
         public async Task SendAsync(TData data)
         {
-            var stream = _client.GetStream();
+            ThrowIfTcpClientIsNull();
+            var stream = _client!.GetStream();
             byte[] byteData = _dataConverter.ToBytes(data);
 
             await stream.WriteAsync(byteData, 0, byteData.Length);
@@ -206,9 +237,17 @@ namespace OneImlx.Network
             return await ReceiveAsync();
         }
 
-        private readonly TcpClient _client;
-        private readonly ISessionBytesConverter<TData> _dataConverter;
-        private readonly StringBuilder _leftoverData = new();
-        private readonly ISessionBytesConverter<TResult> _resultConverter;
+        private void ThrowIfTcpClientIsNull()
+        {
+            if (_client == null)
+            {
+                throw new OneImlxException("invalid_request", "The TCP client is null or not initialized");
+            }
+        }
+
+        private TcpClient? _client;
+        private ISessionBytesConverter<TData> _dataConverter;
+        private StringBuilder _leftoverData = new();
+        private ISessionBytesConverter<TResult> _resultConverter;
     }
 }

@@ -1,11 +1,13 @@
 /*
-    Copyright 2024 (c) Perpetual Intelligence L.L.C. All Rights Reserved.
+    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
 
     For license, terms, and data policies, go to:
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
 using FluentAssertions;
+using OneImlx.Abstractions;
+using OneImlx.Test.FluentAssertions;
 using System;
 using System.Text.Json;
 using Xunit;
@@ -31,8 +33,19 @@ namespace OneImlx.Network
 
             Action act = () => _converter.FromBytes(bytes);
 
-            act.Should().Throw<InvalidOperationException>()
-               .WithMessage("Deserialization failed.");
+            act.Should().Throw<JsonException>();
+        }
+
+        [Fact]
+        public void FromBytes_ShouldThrowExceptionWhenDeserializationReturnsNull()
+        {
+            var bytes = System.Text.Encoding.UTF8.GetBytes("null"); // JSON null
+
+            Action act = () => _converter.FromBytes(bytes);
+
+            act.Should().Throw<OneImlxException>()
+               .WithErrorCode("invalid_request")
+               .WithErrorDescription("The JSON deserialization failed.");
         }
 
         [Fact]
