@@ -82,6 +82,16 @@ The `OneImlx.Terminal` module is a cross-platform terminal framework. It provide
 - **Extensible**: Can be extended to fit various terminal-based use cases.
 - **Flexible Integration**: Easy integration with other modules and systems.
 
+## OneImlx.Deployment
+
+The `OneImlx.Deployment` module provides a platform-agnostic deployment framework for secure environments. It ensures that applications and services can be deployed reliably and securely across different platforms.
+
+### Key Features
+- **Platform-Agnostic**: Supports deployment on multiple platforms including Windows, Linux, and macOS.
+- **Secure Deployment**: Ensures secure deployment practices for applications and services.
+- **Scalable**: Facilitates scalable deployment strategies.
+- **Extensible**: Can be adapted to fit various deployment scenarios and requirements.
+
 ## Feedback
 Your feedback helps shape `OneImlx`. For suggestions, issues, or queries, please visit our [GitHub Repository Issues section](https://github.com/PerpetualIntelligence/OneImlx/issues).
 
