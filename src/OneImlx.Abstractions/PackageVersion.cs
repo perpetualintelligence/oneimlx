@@ -70,9 +70,6 @@ namespace OneImlx.Abstractions
         /// Returns the string representation of the version.
         /// </summary>
         /// <returns>The version as a string.</returns>
-        public override string ToString()
-        {
-            return Suffix != null ? $"{Major}.{Minor}.{Patch}-{Suffix}" : $"{Major}.{Minor}.{Patch}";
-        }
+        public override string ToString() => Suffix != null ? $"{Major}.{Minor}.{Patch}-{Suffix}" : $"{Major}.{Minor}.{Patch}";
     }
 }

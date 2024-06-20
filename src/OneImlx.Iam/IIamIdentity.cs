@@ -11,9 +11,9 @@ using OneImlx.Abstractions;
 namespace OneImlx.Iam
 {
     /// <summary>
-    /// Defines a genric <c>OneImlx</c> IAM identity.
+    /// Defines a generic <c>OneImlx</c> IAM identity.
     /// </summary>
-    public interface IIamIdentity : IIdentity, IId, IName, IMetadata, IAuditable
+    public interface IIamIdentity : IIdentity, IId, IName, IMetadata
     {
     }
 }

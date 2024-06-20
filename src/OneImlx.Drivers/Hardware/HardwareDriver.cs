@@ -49,10 +49,7 @@ namespace OneImlx.Drivers.Hardware
         /// Adds an update to the available updates list.
         /// </summary>
         /// <param name="driver">The update to add to the available updates list.</param>
-        public void AddUpdate(TDriver driver)
-        {
-            _updates.Add(driver);
-        }
+        public void AddUpdate(TDriver driver) => _updates.Add(driver);
 
         /// <summary>
         /// Updates the current driver if the specified update exists in the updates list. Moves the current driver to

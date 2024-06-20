@@ -29,10 +29,7 @@ namespace OneImlx.Drivers.Hardware
         /// Gets all hardware driver information as an enumerable collection.
         /// </summary>
         /// <returns>An enumerable collection of all hardware driver information.</returns>
-        public IEnumerable<HardwareDriver<THardware, TDriver>> GetAll()
-        {
-            return _hardwareDrivers.Values.AsEnumerable();
-        }
+        public IEnumerable<HardwareDriver<THardware, TDriver>> GetAll() => _hardwareDrivers.Values.AsEnumerable();
 
         /// <summary>
         /// Pulls the available updates from a remote source asynchronously.
@@ -72,10 +69,7 @@ namespace OneImlx.Drivers.Hardware
         /// <param name="hardwareId">The ID of the hardware.</param>
         /// <param name="hardwareDriver">The hardware driver information, if found.</param>
         /// <returns>True if the hardware driver information was found, false otherwise.</returns>
-        public bool TryGet(string hardwareId, out HardwareDriver<THardware, TDriver> hardwareDriver)
-        {
-            return _hardwareDrivers.TryGetValue(hardwareId, out hardwareDriver);
-        }
+        public bool TryGet(string hardwareId, out HardwareDriver<THardware, TDriver> hardwareDriver) => _hardwareDrivers.TryGetValue(hardwareId, out hardwareDriver);
 
         /// <summary>
         /// Removes the driver information for a hardware.
@@ -83,12 +77,9 @@ namespace OneImlx.Drivers.Hardware
         /// <param name="hardwareId">The ID of the hardware.</param>
         /// <param name="hardwareDriver">The removed hardware driver information, if found.</param>
         /// <returns>True if the driver information was removed successfully, false otherwise.</returns>
-        public bool TryRemove(string hardwareId, out HardwareDriver<THardware, TDriver> hardwareDriver)
-        {
-            return _hardwareDrivers.TryRemove(hardwareId, out hardwareDriver);
-        }
+        public bool TryRemove(string hardwareId, out HardwareDriver<THardware, TDriver> hardwareDriver) => _hardwareDrivers.TryRemove(hardwareId, out hardwareDriver);
 
         private readonly IDriverRepository<THardware, TDriver> _driverRepository = driverRepository ?? throw new ArgumentNullException(nameof(driverRepository));
-        private readonly ConcurrentDictionary<string, HardwareDriver<THardware, TDriver>> _hardwareDrivers = new ConcurrentDictionary<string, HardwareDriver<THardware, TDriver>>();
+        private readonly ConcurrentDictionary<string, HardwareDriver<THardware, TDriver>> _hardwareDrivers = new();
     }
 }

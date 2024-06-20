@@ -51,10 +51,7 @@ namespace OneImlx.Abstractions.Stores
         }
 
         /// <inheritdoc/>
-        public Task<IEnumerable<TEntity>> AllAsync()
-        {
-            return Task.FromResult(_entities.Values.AsEnumerable());
-        }
+        public Task<IEnumerable<TEntity>> AllAsync() => Task.FromResult(_entities.Values.AsEnumerable());
 
         /// <inheritdoc/>
         public Task ClearAsync()

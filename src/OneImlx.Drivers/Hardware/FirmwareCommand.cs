@@ -68,10 +68,7 @@ namespace OneImlx.Drivers.Hardware
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
         /// <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as FirmwareCommand);
-        }
+        public override bool Equals(object obj) => Equals(obj as FirmwareCommand);
 
         /// <summary>
         /// Determines whether the specified <see cref="FirmwareCommand"/> is equal to the current <see cref="FirmwareCommand"/>.
@@ -81,18 +78,12 @@ namespace OneImlx.Drivers.Hardware
         /// True if the specified <see cref="FirmwareCommand"/> is equal to the current <see cref="FirmwareCommand"/>;
         /// otherwise, false.
         /// </returns>
-        public bool Equals(FirmwareCommand other)
-        {
-            return other != null && Id == other.Id;
-        }
+        public bool Equals(FirmwareCommand other) => other != null && Id == other.Id;
 
         /// <summary>
         /// Serves as the default hash function.
         /// </summary>
         /// <returns>A hash code for the current object.</returns>
-        public override int GetHashCode()
-        {
-            return Id.GetHashCode();
-        }
+        public override int GetHashCode() => Id.GetHashCode();
     }
 }

@@ -15,22 +15,13 @@ namespace OneImlx.Licensing
     public class LicenseClaimsManager : ILicenseManager
     {
         /// <inheritdoc/>
-        public bool HasLicenseFor(ILicenseIdentity identity, ILicenseResource resource, out License? license)
-        {
-            throw new System.NotImplementedException();
-        }
+        public bool HasLicenseFor(ILicenseIdentity identity, ILicenseResource resource, out License? license) => throw new System.NotImplementedException();
 
         /// <inheritdoc/>
-        public bool HasLicenseFor(ILicensePrincipal principal, ILicenseResource resource, out License? license)
-        {
-            throw new System.NotImplementedException();
-        }
+        public bool HasLicenseFor(ILicensePrincipal principal, ILicenseResource resource, out License? license) => throw new System.NotImplementedException();
 
         /// <inheritdoc/>
-        public bool HasLicenseFor(string identityId, string resourceId, out License? license)
-        {
-            throw new System.NotImplementedException();
-        }
+        public bool HasLicenseFor(string identityId, string resourceId, out License? license) => throw new System.NotImplementedException();
 
         private readonly HashSet<License> _licenses = new();
     }

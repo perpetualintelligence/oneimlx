@@ -177,9 +177,7 @@ namespace OneImlx.Network.Tests
             _testClient.Close(); // Close the client after the test
         }
 
-        private TcpSession<string, string> CreateSession()
-        {
-            return new TcpSession<string, string>(
+        private TcpSession<string, string> CreateSession() => new(
                 "testId",
                 "testName",
                 "testDescription",
@@ -188,7 +186,6 @@ namespace OneImlx.Network.Tests
                 _dataConverterMock.Object,
                 _resultConverterMock.Object
                                                  );
-        }
 
         private readonly Mock<ISessionBytesConverter<string>> _dataConverterMock;
         private readonly TcpListener _listener;

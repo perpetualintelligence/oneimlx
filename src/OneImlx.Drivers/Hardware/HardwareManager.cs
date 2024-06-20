@@ -37,10 +37,7 @@ namespace OneImlx.Drivers.Hardware
         /// This method uses <see cref="ImmutableDictionary{TKey, TValue}"/> to provide a thread-safe, read-only
         /// collection of the hardware components.
         /// </remarks>
-        public IReadOnlyDictionary<string, THardware> All()
-        {
-            return hardwareComponents.ToImmutableDictionary();
-        }
+        public IReadOnlyDictionary<string, THardware> All() => hardwareComponents.ToImmutableDictionary();
 
         /// <summary>
         /// Adds a hardware component to the manager.
@@ -51,10 +48,7 @@ namespace OneImlx.Drivers.Hardware
         /// This method uses <see cref="ConcurrentDictionary{TKey, TValue}.TryAdd"/> to ensure that the addition
         /// operation is atomic and thread-safe.
         /// </remarks>
-        public bool TryAdd(THardware hardware)
-        {
-            return hardwareComponents.TryAdd(hardware.Id, hardware);
-        }
+        public bool TryAdd(THardware hardware) => hardwareComponents.TryAdd(hardware.Id, hardware);
 
         /// <summary>
         /// Gets a hardware component by its ID.
@@ -69,10 +63,7 @@ namespace OneImlx.Drivers.Hardware
         /// This method uses <see cref="ConcurrentDictionary{TKey, TValue}.TryGetValue"/> to ensure thread-safe
         /// retrieval of a hardware component by its ID.
         /// </remarks>
-        public bool TryGet(string hardwareId, out THardware? hardware)
-        {
-            return hardwareComponents.TryGetValue(hardwareId, out hardware);
-        }
+        public bool TryGet(string hardwareId, out THardware? hardware) => hardwareComponents.TryGetValue(hardwareId, out hardware);
 
         /// <summary>
         /// Removes a hardware component from the manager.
@@ -87,10 +78,7 @@ namespace OneImlx.Drivers.Hardware
         /// This method uses <see cref="ConcurrentDictionary{TKey, TValue}.TryRemove"/> to ensure thread-safe removal of
         /// a hardware component by its ID.
         /// </remarks>
-        public bool TryRemove(string hardwareId, out THardware? hardware)
-        {
-            return hardwareComponents.TryRemove(hardwareId, out hardware);
-        }
+        public bool TryRemove(string hardwareId, out THardware? hardware) => hardwareComponents.TryRemove(hardwareId, out hardware);
 
         private readonly ConcurrentDictionary<string, THardware> hardwareComponents;
     }

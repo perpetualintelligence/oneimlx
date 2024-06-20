@@ -48,10 +48,7 @@ namespace OneImlx.Abstractions.Stores
         /// returned by this method is not guaranteed to match the order in which entities were added or any specific
         /// order. Consumers should not rely on the order of entities returned.
         /// </remarks>
-        public Task<IEnumerable<TEntity>> AllAsync()
-        {
-            return Task.FromResult(_entities.Values);
-        }
+        public Task<IEnumerable<TEntity>> AllAsync() => Task.FromResult(_entities.Values);
 
         /// <summary>
         /// Asynchronously attempts to find an entity by its identifier.

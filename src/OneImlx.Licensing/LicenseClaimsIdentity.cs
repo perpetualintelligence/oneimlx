@@ -91,29 +91,20 @@ namespace OneImlx.Licensing
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
         /// <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
-        public override bool Equals(object? obj)
-        {
-            return Equals(obj as LicenseClaimsIdentity);
-        }
+        public override bool Equals(object? obj) => Equals(obj as LicenseClaimsIdentity);
 
         /// <summary>
         /// Determines whether the specified <see cref="LicenseClaimsIdentity"/> is equal to the current identity.
         /// </summary>
         /// <param name="other">The <see cref="LicenseClaimsIdentity"/> to compare with the current identity.</param>
         /// <returns>True if the specified identity is equal to the current identity; otherwise, false.</returns>
-        public bool Equals(LicenseClaimsIdentity? other)
-        {
-            return other is not null &&
+        public bool Equals(LicenseClaimsIdentity? other) => other is not null &&
                    Id == other.Id;
-        }
 
         /// <summary>
         /// Returns a hash code for the current identity.
         /// </summary>
         /// <returns>A hash code for the current identity.</returns>
-        public override int GetHashCode()
-        {
-            return Id.GetHashCode();
-        }
+        public override int GetHashCode() => Id.GetHashCode();
     }
 }

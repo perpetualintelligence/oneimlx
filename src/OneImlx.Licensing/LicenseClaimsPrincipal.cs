@@ -33,9 +33,6 @@ namespace OneImlx.Licensing
 
         IEnumerable<ILicenseIdentity> ILicensePrincipal.Identities => throw new System.NotImplementedException();
 
-        public bool IsLicensed(string identityId, out ILicenseIdentity? licenseIdentity)
-        {
-            throw new System.NotImplementedException();
-        }
+        public bool IsLicensed(string identityId, out ILicenseIdentity? licenseIdentity) => throw new System.NotImplementedException();
     }
 }

@@ -32,9 +32,6 @@ namespace OneImlx.Network
         /// </summary>
         /// <param name="data">The data to convert.</param>
         /// <returns>The converted byte array.</returns>
-        public byte[] ToBytes(TData data)
-        {
-            return JsonSerializer.SerializeToUtf8Bytes(data);
-        }
+        public byte[] ToBytes(TData data) => JsonSerializer.SerializeToUtf8Bytes(data);
     }
 }

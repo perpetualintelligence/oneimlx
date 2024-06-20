@@ -69,10 +69,7 @@ namespace OneImlx.Licensing
         /// <param name="principal">The principal to be checked.</param>
         /// <param name="resource">The resource to check the license against.</param>
         /// <returns>True if the principal is licensed for the resource, otherwise false.</returns>
-        public bool IsLicensed(ILicensePrincipal principal, ILicenseResource resource)
-        {
-            return _principals.Contains(principal) && _resources.Contains(resource);
-        }
+        public bool IsLicensed(ILicensePrincipal principal, ILicenseResource resource) => _principals.Contains(principal) && _resources.Contains(resource);
 
         /// <summary>
         /// Determines whether the specified principal identifier and resource identifier match any licensed pairs.
@@ -80,10 +77,7 @@ namespace OneImlx.Licensing
         /// <param name="identityId">The identifier of an identity.</param>
         /// <param name="resourceId">The identifier of the resource.</param>
         /// <returns>True if there exists a licensed pair with the given identifiers, otherwise false.</returns>
-        public bool IsLicensed(string identityId, string resourceId)
-        {
-            return _principals.Any(p => p.Identities.Any(e => e.Id.Equals(identityId))) && _resources.Any(r => r.Id == resourceId);
-        }
+        public bool IsLicensed(string identityId, string resourceId) => _principals.Any(p => p.Identities.Any(e => e.Id.Equals(identityId))) && _resources.Any(r => r.Id == resourceId);
 
         private readonly HashSet<ILicensePrincipal> _principals;
         private readonly HashSet<ILicenseResource> _resources;
