@@ -27,14 +27,22 @@ namespace OneImlx.Network
         Task DisconnectAsync();
 
         /// <summary>
-        /// Determines if the session connected to the remote host.
+        /// Flushes the underlying stream immediately.
         /// </summary>
+        /// <returns>A task representing the asynchronous flush operation.</returns>
+        Task FlushAsync();
+
+        /// <summary>
+        /// Determines if the session is connected to the remote host.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation to check the connection status.</returns>
         Task<bool> IsConnectedAsync();
 
         /// <summary>
-        /// Resets a connection with the remote host. If the connection is already established then this method will
-        /// disconnect and connect to remote host again.
+        /// Resets the connection with the remote host. If the connection is already established, this method will
+        /// disconnect and reconnect to the remote host.
         /// </summary>
+        /// <returns>A task representing the asynchronous reset operation.</returns>
         Task ResetAsync();
 
         /// <summary>

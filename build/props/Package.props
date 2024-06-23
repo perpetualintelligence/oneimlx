@@ -15,7 +15,7 @@
         Shared package properties.
     -->
     <PropertyGroup>
-        <Copyright>Copyright (c) 2023. Perpetual Intelligence L.L.C. All Rights Reserved.</Copyright>
+        <Copyright>Copyright (c) 2019-2024. Perpetual Intelligence L.L.C. All Rights Reserved.</Copyright>
         <Authors>Perpetual Intelligence</Authors>
         <Company>Perpetual Intelligence L.L.C.</Company>
         <Product>oneimlx</Product>

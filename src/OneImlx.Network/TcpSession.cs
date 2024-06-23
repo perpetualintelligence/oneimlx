@@ -6,7 +6,9 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -30,8 +32,8 @@ namespace OneImlx.Network
         /// <param name="port">The port to connect to.</param>
         /// <param name="dataConverter">The converter used for data serialization and deserialization.</param>
         /// <param name="resultConverter">The converter used for result serialization and deserialization.</param>
-        /// <param name="endOfMessage">The end-of-message marker (optional, default is "$m$").</param>
-        public TcpSession(string id, string name, string description, string host, int port, ISessionBytesConverter<TData> dataConverter, ISessionBytesConverter<TResult> resultConverter, string endOfMessage = "$m$")
+        /// <param name="endOfMessage">The end-of-message marker.</param>
+        public TcpSession(string id, string name, string description, string host, int port, ISessionBytesConverter<TData> dataConverter, ISessionBytesConverter<TResult> resultConverter, byte[] endOfMessage)
         {
             Id = id;
             Name = name;
@@ -41,7 +43,7 @@ namespace OneImlx.Network
             _client = new TcpClient();
             _dataConverter = dataConverter;
             _resultConverter = resultConverter;
-            EndOfMessage = endOfMessage; // Default end-of-message marker
+            EndOfMessage = endOfMessage; // End-of-message marker
         }
 
         /// <summary>
@@ -54,8 +56,8 @@ namespace OneImlx.Network
         /// <param name="port">The port to connect to.</param>
         /// <param name="dataConverter">The converter used for data serialization and deserialization.</param>
         /// <param name="resultConverter">The converter used for result serialization and deserialization.</param>
-        /// <param name="endOfMessage">The end-of-message marker (optional, default is "$m$").</param>
-        public TcpSession(string id, string name, string description, IPAddress ipAddress, int port, ISessionBytesConverter<TData> dataConverter, ISessionBytesConverter<TResult> resultConverter, string endOfMessage = "$m$")
+        /// <param name="endOfMessage">The end-of-message marker.</param>
+        public TcpSession(string id, string name, string description, IPAddress ipAddress, int port, ISessionBytesConverter<TData> dataConverter, ISessionBytesConverter<TResult> resultConverter, byte[] endOfMessage)
         {
             Id = id;
             Name = name;
@@ -64,7 +66,7 @@ namespace OneImlx.Network
             Port = port;
             _dataConverter = dataConverter;
             _resultConverter = resultConverter;
-            EndOfMessage = endOfMessage; // Default end-of-message marker
+            EndOfMessage = endOfMessage; // End-of-message marker
         }
 
         /// <summary>
@@ -75,7 +77,7 @@ namespace OneImlx.Network
         /// <summary>
         /// Gets the end-of-message marker to determine the end of the response.
         /// </summary>
-        public string EndOfMessage { get; private set; }
+        public byte[] EndOfMessage { get; private set; }
 
         /// <summary>
         /// Gets the hostname used to connect to the session.
@@ -120,7 +122,7 @@ namespace OneImlx.Network
             }
             else
             {
-                throw new OneImlxException("invalid_request", "Host or IP address must be set.");
+                throw new OneImlxException("invalid_request", "The hostname or IP address must be set.");
             }
         }
 
@@ -137,9 +139,20 @@ namespace OneImlx.Network
         }
 
         /// <summary>
+        /// Flushes the underlying stream immediately.
+        /// </summary>
+        /// <returns>A task representing the asynchronous flush operation.</returns>
+        public async Task FlushAsync()
+        {
+            ThrowIfTcpClientIsNull();
+            var stream = _client!.GetStream();
+            await stream.FlushAsync();
+        }
+
+        /// <summary>
         /// Reads data from the stream asynchronously.
         /// </summary>
-        /// <returns>A task representing the asynchronous read operation, with the received data as a stream.</returns>
+        /// <returns>A stream representing the data read from the session.</returns>
         public Stream GetStream()
         {
             ThrowIfTcpClientIsNull();
@@ -149,7 +162,7 @@ namespace OneImlx.Network
         /// <summary>
         /// Determines if this TCP session is connected to the remote host.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task representing the asynchronous operation to check the connection status.</returns>
         public Task<bool> IsConnectedAsync()
         {
             bool result = _client?.Connected ?? false;
@@ -159,48 +172,40 @@ namespace OneImlx.Network
         /// <summary>
         /// Receives data asynchronously.
         /// </summary>
-        /// <returns>A task representing the asynchronous receive operation, with the received data as TResult.</returns>
+        /// <returns>A task representing the asynchronous receive operation, with the received data as <typeparamref name="TResult"/>.</returns>
         public async Task<TResult> ReceiveAsync()
         {
             ThrowIfTcpClientIsNull();
             var stream = _client!.GetStream();
             byte[] buffer = new byte[1024];
             int bytesRead;
-            StringBuilder responseBuilder = new(_leftoverData.ToString());
-            bool eomFound = false;
 
             // Read the entire response
             while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
             {
-                string chunk = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                responseBuilder.Append(chunk);
-
-                // Check if the end-of-message marker is found
-                int eomIndex = responseBuilder.ToString().IndexOf(EndOfMessage, StringComparison.Ordinal);
-                if (eomIndex >= 0)
+                // Put the read bytes in queue
+                for (int idx = 0; idx < bytesRead; idx++)
                 {
-                    eomFound = true;
-                    _leftoverData.Clear();
-                    _leftoverData.Append(responseBuilder.ToString().Substring(eomIndex + EndOfMessage.Length));
-                    responseBuilder.Length = eomIndex + EndOfMessage.Length; // Trim the response to EOM
-                    break;
+                    _leftoverData.Enqueue(buffer[idx]);
+                }
+
+                // Get the first full message
+                byte[]? response = FirstFullMessage();
+                if (response != null)
+                {
+                    // Found
+                    return _resultConverter.FromBytes(response);
                 }
             }
 
-            if (!eomFound)
-            {
-                _leftoverData.Clear(); // Clear leftover if EOM is not found
-            }
-
-            string response = responseBuilder.ToString();
-            byte[] responseBytes = Encoding.UTF8.GetBytes(response);
-
-            return _resultConverter.FromBytes(responseBytes);
+            // Timeout
+            throw new TimeoutException($"The session receive timed out. session={Id}");
         }
 
         /// <summary>
         /// Resets the client connection by disconnecting and reconnecting the connection to the remote host.
         /// </summary>
+        /// <returns>A task representing the asynchronous reset operation.</returns>
         public async Task ResetAsync()
         {
             if (await IsConnectedAsync())
@@ -222,7 +227,6 @@ namespace OneImlx.Network
             ThrowIfTcpClientIsNull();
             var stream = _client!.GetStream();
             byte[] byteData = _dataConverter.ToBytes(data);
-
             await stream.WriteAsync(byteData, 0, byteData.Length);
         }
 
@@ -230,11 +234,63 @@ namespace OneImlx.Network
         /// Sends and receives data asynchronously.
         /// </summary>
         /// <param name="data">The data to send.</param>
-        /// <returns>A task representing the asynchronous send and receive operation, with the received data as TResult.</returns>
+        /// <returns>A task representing the asynchronous send and receive operation, with the received data as <typeparamref name="TResult"/>.</returns>
         public async Task<TResult> SendReceiveAsync(TData data)
         {
             await SendAsync(data);
             return await ReceiveAsync();
+        }
+
+        private byte[]? FirstFullMessage()
+        {
+            Queue<byte> result = new Queue<byte>();
+
+            // If the Queue is same or less than delimiter then there is no message
+            int eomLength = EndOfMessage.Length;
+            if (_leftoverData.Count <= eomLength)
+            {
+                return null;
+            }
+
+            // Take first n elements from queue and compare them with delimiter bytes sequentially. If we found a
+            // sequential match then we have our full message.
+            bool eomMatched = false;
+            while (_leftoverData.Count > 0)
+            {
+                // If all the bytes of eom match then have our full message
+                for (int jdx = 0; jdx < eomLength; ++jdx)
+                {
+                    // If we run out of data while trying to match EOM, break and re-enqueue
+                    if (_leftoverData.Count == 0)
+                    {
+                        eomMatched = false;
+                        break;
+                    }
+
+                    byte current = _leftoverData.Dequeue();
+                    result.Enqueue(current);
+                    bool currentMatch = current == EndOfMessage[jdx];
+
+                    if (!currentMatch)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        eomMatched = currentMatch && (jdx == eomLength - 1);
+                    }
+                }
+
+                if (eomMatched)
+                {
+                    for (int jdx = 0; jdx < eomLength; ++jdx)
+                    {
+                        result.Dequeue();
+                    }
+                }
+            }
+
+            return null;
         }
 
         private void ThrowIfTcpClientIsNull()
@@ -245,9 +301,9 @@ namespace OneImlx.Network
             }
         }
 
+        private readonly ISessionBytesConverter<TData> _dataConverter;
+        private readonly Queue<byte> _leftoverData = new();
+        private readonly ISessionBytesConverter<TResult> _resultConverter;
         private TcpClient? _client;
-        private ISessionBytesConverter<TData> _dataConverter;
-        private StringBuilder _leftoverData = new();
-        private ISessionBytesConverter<TResult> _resultConverter;
     }
 }

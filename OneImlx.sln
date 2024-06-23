@@ -5,8 +5,10 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{5348502E-8B8A-48FB-B735-251DF050C742}"
 	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
 		build\props\Package.props = build\props\Package.props
 		build\props\PackageLicense.props = build\props\PackageLicense.props
+		README.md = README.md
 		build\props\Test.props = build\props\Test.props
 	EndProjectSection
 EndProject
@@ -51,7 +53,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Jobs.Tests", "test\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Deployment", "src\OneImlx.Deployment\OneImlx.Deployment.csproj", "{8141EA33-A952-43B2-A0FC-8A315478E1A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneImlx.Deployment.Tests", "test\OneImlx.Deployment.Tests\OneImlx.Deployment.Tests.csproj", "{C6E568B1-40B4-40B0-A30C-6E8ED3FA5BCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneImlx.Deployment.Tests", "test\OneImlx.Deployment.Tests\OneImlx.Deployment.Tests.csproj", "{C6E568B1-40B4-40B0-A30C-6E8ED3FA5BCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

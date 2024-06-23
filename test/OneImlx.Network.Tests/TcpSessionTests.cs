@@ -6,7 +6,8 @@
 */
 
 using FluentAssertions;
-using Moq;
+using OneImlx.Abstractions;
+using OneImlx.Test.FluentAssertions;
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -23,8 +24,9 @@ namespace OneImlx.Network.Tests
             _port = new Random().Next(10000, 60000);
             _listener = new TcpListener(IPAddress.Loopback, _port);
             _listener.Start();
-            _dataConverterMock = new Mock<ISessionBytesConverter<string>>();
-            _resultConverterMock = new Mock<ISessionBytesConverter<string>>();
+            _dataConverter = new JsonSessionBytesConverter<string>();
+            _resultConverter = new JsonSessionBytesConverter<string>();
+            _eom = Encoding.UTF8.GetBytes("$m$");
         }
 
         [Fact]
@@ -42,10 +44,20 @@ namespace OneImlx.Network.Tests
         }
 
         [Fact]
+        public void Constructor_ShouldInitializeWithIpAddress()
+        {
+            var ipAddress = IPAddress.Loopback;
+            var session = new TcpSession<string, string>("testId", "testName", "testDescription", ipAddress, _port, _dataConverter, _resultConverter, _eom);
+
+            session.IpAddress.Should().Be(ipAddress);
+            session.Port.Should().Be(_port);
+        }
+
+        [Fact]
         public async Task DisconnectAsync_ShouldCloseTcpClient()
         {
             var session = CreateSession();
-            await session.ConnectAsync();
+            var _ = session.ConnectAsync();
 
             _testClient = await _listener.AcceptTcpClientAsync();
             await session.DisconnectAsync();
@@ -62,6 +74,50 @@ namespace OneImlx.Network.Tests
         }
 
         [Fact]
+        public async Task ExceptionHandling_ConnectAsync_ShouldThrowException_WhenHostOrIpAddressNotSet()
+        {
+            var session = new TcpSession<string, string>("testId", "testName", "testDescription", ipAddress: null!, _port, _dataConverter, _resultConverter, _eom);
+            Func<Task> act = async () => await session.ConnectAsync();
+            await act.Should().ThrowAsync<OneImlxException>()
+                .WithErrorCode("invalid_request")
+                .WithErrorDescription("The hostname or IP address must be set.");
+
+            var session2 = new TcpSession<string, string>("testId", "testName", "testDescription", ipAddress: null!, _port, _dataConverter, _resultConverter, _eom);
+            Func<Task> act2 = async () => await session2.ConnectAsync();
+            await act2.Should().ThrowAsync<OneImlxException>()
+                .WithErrorCode("invalid_request")
+                .WithErrorDescription("The hostname or IP address must be set.");
+        }
+
+        [Fact]
+        public async Task FlushAsync_ShouldFlushStream()
+        {
+            var session = CreateSession();
+            var connectTask = session.ConnectAsync();
+            _testClient = await _listener.AcceptTcpClientAsync();
+            await connectTask;
+
+            var networkStream = _testClient.GetStream();
+            var buffer = new byte[1024];
+
+            var data = "test data";
+
+            // Send data back to server
+            await session.SendAsync(data);
+            await session.FlushAsync();
+
+            // Verify
+            var bytesRead = await networkStream.ReadAsync(buffer);
+            var actualBytes = new byte[bytesRead];
+            Array.Copy(buffer, actualBytes, bytesRead);
+
+            var receivedData = _resultConverter.FromBytes(actualBytes);
+            receivedData.Should().Be(data);
+
+            _testClient.Close(); // Close the client after the test
+        }
+
+        [Fact]
         public async Task IsConnectedAsync_ShouldReturnFalse_WhenNotConnected()
         {
             var session = CreateSession();
@@ -74,7 +130,7 @@ namespace OneImlx.Network.Tests
         public async Task IsConnectedAsync_ShouldReturnTrue_WhenConnected()
         {
             var session = CreateSession();
-            await session.ConnectAsync();
+            var _ = session.ConnectAsync();
 
             _testClient = await _listener.AcceptTcpClientAsync();
             var result = await session.IsConnectedAsync();
@@ -88,16 +144,16 @@ namespace OneImlx.Network.Tests
         public async Task ReceiveAsync_ShouldReceiveData()
         {
             var session = CreateSession();
-            var responseData = "response data";
-            var responseBytes = Encoding.UTF8.GetBytes(responseData + "$m$");
-            _resultConverterMock.Setup(rc => rc.FromBytes(It.IsAny<byte[]>())).Returns(responseData);
-
-            await session.ConnectAsync();
+            var _ = session.ConnectAsync();
             _testClient = await _listener.AcceptTcpClientAsync();
 
+            // Send the data from server to session
+            var responseData = "test response data";
+            var responseBytes = _dataConverter.ToBytes(responseData + "$m$");
             var networkStream = _testClient.GetStream();
-            await networkStream.WriteAsync(responseBytes, 0, responseBytes.Length);
+            await networkStream.WriteAsync(responseBytes);
 
+            // Receive the data from session
             var result = await session.ReceiveAsync();
 
             result.Should().Be(responseData);
@@ -109,7 +165,7 @@ namespace OneImlx.Network.Tests
         public async Task ResetAsync_ShouldDisconnectAndReconnect()
         {
             var session = CreateSession();
-            await session.ConnectAsync();
+            var _ = session.ConnectAsync();
             _testClient = await _listener.AcceptTcpClientAsync();
 
             await session.ResetAsync();
@@ -129,9 +185,8 @@ namespace OneImlx.Network.Tests
             var session = CreateSession();
             var data = "test data";
             var bytes = Encoding.UTF8.GetBytes(data);
-            _dataConverterMock.Setup(dc => dc.ToBytes(data)).Returns(bytes);
 
-            await session.ConnectAsync();
+            var _ = session.ConnectAsync();
             _testClient = await _listener.AcceptTcpClientAsync();
 
             var networkStream = _testClient.GetStream();
@@ -155,10 +210,7 @@ namespace OneImlx.Network.Tests
             var dataBytes = Encoding.UTF8.GetBytes(data);
             var responseBytes = Encoding.UTF8.GetBytes(responseData + "$m$");
 
-            _dataConverterMock.Setup(dc => dc.ToBytes(data)).Returns(dataBytes);
-            _resultConverterMock.Setup(rc => rc.FromBytes(It.IsAny<byte[]>())).Returns(responseData);
-
-            await session.ConnectAsync();
+            var _ = session.ConnectAsync();
             _testClient = await _listener.AcceptTcpClientAsync();
 
             var networkStream = _testClient.GetStream();
@@ -177,20 +229,23 @@ namespace OneImlx.Network.Tests
             _testClient.Close(); // Close the client after the test
         }
 
-        private TcpSession<string, string> CreateSession() => new(
-                "testId",
-                "testName",
-                "testDescription",
-                "localhost",
-                _port,
-                _dataConverterMock.Object,
-                _resultConverterMock.Object
-                                                 );
+        private TcpSession<string, string> CreateSession() => new
+        (
+            "testId",
+            "testName",
+            "testDescription",
+            "localhost",
+            _port,
+            _dataConverter,
+            _resultConverter,
+            _eom
+        );
 
-        private readonly Mock<ISessionBytesConverter<string>> _dataConverterMock;
+        private readonly JsonSessionBytesConverter<string> _dataConverter;
         private readonly TcpListener _listener;
         private readonly int _port;
-        private readonly Mock<ISessionBytesConverter<string>> _resultConverterMock;
+        private readonly JsonSessionBytesConverter<string> _resultConverter;
+        private byte[] _eom;
         private TcpClient _testClient;
     }
 }
