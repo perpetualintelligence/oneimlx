@@ -8,7 +8,7 @@
 using System.Threading.Tasks;
 using OneImlx.Abstractions;
 
-namespace OneImlx.Rbe
+namespace OneImlx.Rbe.Rules
 {
     /// <summary>
     /// Defines the interface for a rule.
@@ -16,6 +16,8 @@ namespace OneImlx.Rbe
     /// <typeparam name="TContext">The type of the context.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
     public interface IRule<TContext, TResult> : IId, IName, IDescription
+        where TContext : class, IRuleContext<TResult>
+        where TResult : class
     {
         /// <summary>
         /// Determines whether the rule is enabled based on the provided context.
@@ -29,6 +31,6 @@ namespace OneImlx.Rbe
         /// </summary>
         /// <param name="context">The context in which the rule is being executed.</param>
         /// <returns>The result of executing the rule.</returns>
-        Task<TResult> ExecuteAsync(TContext context);
+        Task ExecuteAsync(TContext context);
     }
 }

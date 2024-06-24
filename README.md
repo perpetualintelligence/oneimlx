@@ -1,8 +1,8 @@
 # OneImlx
-![under-development](https://img.shields.io/badge/development--status-under%20development-blue)
+![under-development](https://img.shields.io/badge/development%20status-under%20development-blue)
 [![build-test-cross](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml/badge.svg)](https://github.com/perpetualintelligence/oneimlx/actions/workflows/build-test-cross.yml)
 
-The `OneImlx` is a cross-platform framework designed to address various needs across multiple industries. It provides a robust infrastructure for developing and managing drivers, hardware interactions, job management, access management, licensing, networking, and more. The framework is modular, allowing for the integration of different components as needed.
+The `OneImlx` Framework is a comprehensive and versatile solution designed to address various needs across multiple industries. It provides a robust infrastructure for developing and managing drivers, hardware interactions, job management, access management, licensing, networking, and more. The framework is modular, allowing for the integration of different components as needed.
 
 ## OneImlx.Abstractions
 
@@ -31,6 +31,7 @@ The `OneImlx.Drivers` module provides a robust infrastructure for developing and
 - **Hardware Interaction**: Abstractions for interacting with hardware components.
 - **IoT and Semiconductor Support**: Specialized support for IoT devices and semiconductor components.
 - **Extensibility**: Can be extended to support additional industries and use cases.
+- **UX Rendering**: Includes `IRenderer` and `IDriverRenderer` interfaces to support rendering UX for drivers. `IRenderer` generates a metadata file (e.g., JSON) containing information regarding UX components, layout, dashboarding, charting, etc. A different service reads this metadata to render the UI, ensuring the core driver is independent of the actual UX. Drivers may also support attributes that aid in rendering.
 
 ## OneImlx.Jobs
 

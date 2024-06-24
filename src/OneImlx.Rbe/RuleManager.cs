@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using OneImlx.Abstractions;
+using OneImlx.Rbe.Rules;
 
 namespace OneImlx.Rbe
 {
@@ -16,33 +17,12 @@ namespace OneImlx.Rbe
     /// </summary>
     /// <typeparam name="TContext">The type of the context.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    /// <remarks>
-    /// Initializes a new instance of the <see cref="RuleManager{TContext, TResult}"/> class.
-    /// </remarks>
+    /// <remarks>Initializes a new instance of the <see cref="RuleManager{TContext, TResult}"/> class.</remarks>
     /// <param name="ruleStore">The rule store.</param>
-    public class RuleManager<TContext, TResult>(IRuleStore<TContext, TResult> ruleStore) : IRuleManager<TContext, TResult> where TContext : class, IId
+    public class RuleManager<TContext, TResult>(IRuleStore<TContext, TResult> ruleStore) : IRuleManager<TContext, TResult>
+        where TContext : class, IRuleContext<TResult>
+        where TResult : class
     {
-
-        /// <summary>
-        /// Processes all applicable rules based on the provided context.
-        /// </summary>
-        /// <param name="context">The context for rule evaluation and execution.</param>
-        /// <returns>A list of results from the executed rules.</returns>
-        public async Task<List<TResult>> ProcessRulesAsync(TContext context)
-        {
-            var results = new List<TResult>();
-
-            foreach (var rule in await _ruleStore.AllAsync())
-            {
-                if (await rule.EnabledAsync(context))
-                {
-                    results.Add(await rule.ExecuteAsync(context));
-                }
-            }
-
-            return results;
-        }
-
         private readonly IRuleStore<TContext, TResult> _ruleStore = ruleStore;
     }
 }

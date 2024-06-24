@@ -5,10 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OneImlx.Rbe
+namespace OneImlx.Rbe.Rules
 {
     /// <summary>
     /// Defines the interface for managing and processing rules.
@@ -16,12 +13,8 @@ namespace OneImlx.Rbe
     /// <typeparam name="TContext">The type of the context.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
     public interface IRuleManager<TContext, TResult>
+        where TContext : class, IRuleContext<TResult>
+        where TResult : class
     {
-        /// <summary>
-        /// Processes all applicable rules based on the provided context.
-        /// </summary>
-        /// <param name="context">The context for rule evaluation and execution.</param>
-        /// <returns>A list of results from the executed rules.</returns>
-        Task<List<TResult>> ProcessRulesAsync(TContext context);
     }
 }
