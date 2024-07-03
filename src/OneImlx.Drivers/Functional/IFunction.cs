@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace OneImlx.Drivers.Parametric
 {
     /// <summary>
-    /// Defines an interface for execution a functional workflow or a functional test within a given context.
+    /// Defines an interface for execution a functional work-flow or a functional test within a given context.
     /// </summary>
     /// <typeparam name="TContext">The type of the context.</typeparam>
     /// <typeparam name="TResult">The type of the value to be measured.</typeparam>

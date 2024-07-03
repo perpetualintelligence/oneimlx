@@ -5,7 +5,7 @@
     https://terms.perpetualintelligence.com/articles/intro.html
 */
 
-namespace OneImlx.Drivers
+namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
     /// An abstraction for firmware that runs on driven components.
