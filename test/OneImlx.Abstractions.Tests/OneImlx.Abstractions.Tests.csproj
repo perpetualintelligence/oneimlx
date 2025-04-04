@@ -4,6 +4,5 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\OneImlx.Abstractions\OneImlx.Abstractions.csproj" />
-    </ItemGroup>
-
+    </ItemGroup>    
 </Project>
