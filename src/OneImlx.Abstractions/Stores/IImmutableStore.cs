@@ -1,9 +1,6 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,7 +8,7 @@ using System.Threading.Tasks;
 namespace OneImlx.Abstractions.Stores
 {
     /// <summary>
-    /// Represents an immutable store of entities.
+    /// An abstraction of an immutable store of entities.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity this store manages.</typeparam>
     public interface IImmutableStore<TEntity> where TEntity : IId

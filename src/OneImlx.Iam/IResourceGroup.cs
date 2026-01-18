@@ -1,11 +1,10 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+using OneImlx.Abstractions;
 
-namespace OneImlx.Abstractions
+namespace OneImlx.Iam
 {
     /// <summary>
     /// Defines a <see cref="IResource"/> group.

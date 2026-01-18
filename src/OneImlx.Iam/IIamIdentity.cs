@@ -13,7 +13,7 @@ namespace OneImlx.Iam
     /// <summary>
     /// Defines a generic <c>OneImlx</c> IAM identity.
     /// </summary>
-    public interface IIamIdentity : IIdentity, IId, IName, IMetadata
+    public interface IIamIdentity : IIdentity, IId, IName
     {
     }
 }

@@ -165,7 +165,7 @@ namespace OneImlx.Iam.Stores
             var entityMock = new Mock<IId>();
             entityMock.Setup(e => e.Id).Returns("1");
 
-            var store = new MutableInMemoryStore<IId>(Enumerable.Empty<IId>());
+            var store = new MutableInMemoryStore<IId>([]);
             bool added = await store.TryAddAsync(entityMock.Object);
 
             added.Should().BeTrue();
@@ -191,7 +191,7 @@ namespace OneImlx.Iam.Stores
         [Fact]
         public async Task TryRemoveAsync_ShouldNotRemoveEntity_WhenEntityDoesNotExists()
         {
-            var store = new MutableInMemoryStore<IId>(Enumerable.Empty<IId>());
+            var store = new MutableInMemoryStore<IId>([]);
             RemoveResult<IId> removedResult = await store.TryRemoveAsync("unknown-id");
 
             removedResult.Removed.Should().BeFalse();

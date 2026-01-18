@@ -1,9 +1,6 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 using System;
 using System.Collections.Concurrent;
@@ -14,24 +11,11 @@ using System.Threading.Tasks;
 namespace OneImlx.Abstractions.Stores
 {
     /// <summary>
-    /// Represents an in-memory mutable store for entities.
+    /// In-memory dictionary-based <see cref="IMutableStore{TEntity}"/> of entities.
     /// </summary>
-    /// <typeparam name="TEntity">The type of entities stored in the store.</typeparam>
+    /// <typeparam name="TEntity">The type of entity to store.</typeparam>
     /// <remarks>
-    /// <para>Performance Note:</para>
-    /// <para>
-    /// For optimal performance, it is recommended that entity <see cref="IId.Id"/> is kept as short as possible (e.g.,
-    /// 2 or 3 characters) because the store relies on these IDs for quick and efficient lookups. In many cases,
-    /// permissions and roles in IAM systems can have finite and predefined IDs, and optimizing them for efficient
-    /// access control is a common practice.
-    /// </para>
-    /// <para>Concurrency Note:</para>
-    /// <para>
-    /// The store is designed to handle concurrent read and write operations efficiently using a
-    /// <see cref="ConcurrentDictionary{TKey, TValue}"/>. However, it's essential to be aware of potential race
-    /// conditions in specific compound operations. Care should be taken when combining multiple operations to ensure
-    /// atomicity and consistency.
-    /// </para>
+    /// For optimal performance, <typeparamref name="TEntity"/> should implement equality based on the <see cref="IId.Id"/> property to optimize dictionary lookups.
     /// </remarks>
     public class MutableInMemoryStore<TEntity> : IMutableStore<TEntity> where TEntity : IId
     {
@@ -47,7 +31,7 @@ namespace OneImlx.Abstractions.Stores
                 throw new ArgumentNullException(nameof(entities));
             }
 
-            _entities = new ConcurrentDictionary<string, TEntity>(entities.ToDictionary(entity => entity.Id));
+            _entities = new ConcurrentDictionary<string, TEntity>(entities.Select(e => new KeyValuePair<string, TEntity>(e.Id, e)));
         }
 
         /// <inheritdoc/>

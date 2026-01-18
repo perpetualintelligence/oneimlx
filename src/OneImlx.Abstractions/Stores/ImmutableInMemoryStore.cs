@@ -1,9 +1,6 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 using System;
 using System.Collections.Generic;
@@ -13,16 +10,13 @@ using System.Threading.Tasks;
 namespace OneImlx.Abstractions.Stores
 {
     /// <summary>
-    /// Provides an in-memory <see cref="IImmutableStore{TEntity}"/> for <c>IAM</c> entities.
+    /// In-memory dictionary-based <see cref="IImmutableStore{TEntity}"/> of entities.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity to store.</typeparam>
     /// <remarks>
-    /// To improve performance, especially for lookup operations, it's recommended for <typeparamref name="TEntity"/> to
-    /// implement equality based solely on the <see cref="IId.Id"/> property. In many scenarios, two entities with the
-    /// same <see cref="IId.Id"/> are considered equal, even if other properties differ. By defining equality in this
-    /// manner, dictionary lookups, which are based on the entity's hash code, can be optimized.
+    /// For optimal performance, <typeparamref name="TEntity"/> should implement equality based on the <see cref="IId.Id"/> property to optimize dictionary lookups.
     /// </remarks>
-    public class ImmutableInMemoryStore<TEntity> : IImmutableStore<TEntity> where TEntity : IId
+    public sealed class ImmutableInMemoryStore<TEntity> : IImmutableStore<TEntity> where TEntity : IId
     {
         /// <summary>
         /// Initializes a new instance with the specified entities.
@@ -48,7 +42,7 @@ namespace OneImlx.Abstractions.Stores
         /// returned by this method is not guaranteed to match the order in which entities were added or any specific
         /// order. Consumers should not rely on the order of entities returned.
         /// </remarks>
-        public Task<IEnumerable<TEntity>> AllAsync() => Task.FromResult(_entities.Values);
+        public Task<IEnumerable<TEntity>> AllAsync() => Task.FromResult<IEnumerable<TEntity>>(_entities.Values);
 
         /// <summary>
         /// Asynchronously attempts to find an entity by its identifier.

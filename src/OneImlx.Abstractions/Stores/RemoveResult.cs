@@ -1,14 +1,11 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 namespace OneImlx.Abstractions.Stores
 {
     /// <summary>
-    /// Represents the result of a remove operation.
+    /// The result of a remove operation.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity.</typeparam>
     /// <remarks>Initializes a new instance of the <see cref="FindResult{TEntity}"/> class.</remarks>
