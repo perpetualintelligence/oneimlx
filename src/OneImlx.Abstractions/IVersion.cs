@@ -5,23 +5,13 @@
 namespace OneImlx.Abstractions
 {
     /// <summary>
-    /// An abstraction of a semantic version.
+    /// An abstraction of a version.
     /// </summary>
     public interface IVersion
     {
         /// <summary>
-        /// Gets the major version number.
+        /// Gets the version string.
         /// </summary>
-        int Major { get; }
-
-        /// <summary>
-        /// Gets the minor version number.
-        /// </summary>
-        int Minor { get; }
-
-        /// <summary>
-        /// Gets the patch version number.
-        /// </summary>
-        int Patch { get; }
+        string VersionString();
     }
 }

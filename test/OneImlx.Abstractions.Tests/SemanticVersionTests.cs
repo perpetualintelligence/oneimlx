@@ -79,20 +79,25 @@ namespace OneImlx.Abstractions
             act2.Should().Throw<ArgumentException>().WithMessage("Version string cannot be null or empty.*");
         }
 
-        [Fact]
-        public void ToString_ReturnsCorrectFormatWithoutSuffix()
+        [Theory]
+        [InlineData(1, 2, 3, null, null, "1.2.3")]
+        [InlineData(1, 2, 3, "alpha", null, "1.2.3-alpha")]
+        [InlineData(1, 2, 3, "alpha.1", null, "1.2.3-alpha.1")]
+        [InlineData(1, 2, 3, null, "001", "1.2.3+001")]
+        [InlineData(1, 2, 3, null, "exp.sha.5114f85", "1.2.3+exp.sha.5114f85")]
+        [InlineData(1, 2, 3, "beta.123", "001", "1.2.3-beta.123+001")]
+        [InlineData(1, 2, 3, "beta.123", "exp.sha.5114f85", "1.2.3-beta.123+exp.sha.5114f85")]
+        public void VersionString_ReturnsCorrectFormat(int major, int minor, int patch, string? prerelease, string? buildMetadata, string expected)
         {
-            var version = new SemanticVersion(1, 0, 0);
-            var result = version.ToString();
-            result.Should().Be("1.0.0");
+            var version = new SemanticVersion(major, minor, patch, prerelease, buildMetadata);
+            version.VersionString().Should().Be(expected);
         }
 
         [Fact]
-        public void ToString_ReturnsCorrectFormatWithSuffix()
+        public void ToString_IsSameAsVersionString()
         {
-            var version = new SemanticVersion(1, 0, 0, "beta.123");
-            var result = version.ToString();
-            result.Should().Be("1.0.0-beta.123");
+            var version = new SemanticVersion(1, 2, 3, "beta.123", "build.7");
+            version.ToString().Should().Be(version.VersionString());
         }
 
         [Fact]
