@@ -247,5 +247,34 @@ namespace OneImlx.Abstractions
             version1.Should().Be(version2);
             version1.Should().NotBeSameAs(version2);
         }
+
+        [Fact]
+        public void NegativeVersionNumbersThrows()
+        {
+#pragma warning disable CA1806 // Do not ignore method results
+            Action act1 = () => new SemanticVersion(-1, 0, 0);
+            Action act2 = () => new SemanticVersion(0, -1, 0);
+            Action act3 = () => new SemanticVersion(0, 0, -1);
+            act1.Should().Throw<ArgumentException>().WithMessage("Version numbers must be non-negative.");
+            act2.Should().Throw<ArgumentException>().WithMessage("Version numbers must be non-negative.");
+            act3.Should().Throw<ArgumentException>().WithMessage("Version numbers must be non-negative.");
+#pragma warning restore CA1806 // Do not ignore method results
+        }
+
+        [Fact]
+        public void PrereleaseAndBuildMetadataCannotContainReservedCharacters()
+        {
+#pragma warning disable CA1806 // Do not ignore method results
+            Action act1 = () => new SemanticVersion(1, 0, 0, "alpha+beta", null);
+            Action act2 = () => new SemanticVersion(1, 0, 0, null, "build-beta");
+            Action act3 = () => new SemanticVersion(1, 0, 0, "alpha-beta", null);
+            Action act4 = () => new SemanticVersion(1, 0, 0, null, "build+beta");
+
+            act1.Should().Throw<ArgumentException>().WithMessage("Pre-release version must not contain '-' or '+'.*").And.ParamName.Should().Be("preRelease");
+            act2.Should().Throw<ArgumentException>().WithMessage("Build metadata must not contain '-' or '+'.*").And.ParamName.Should().Be("buildMetadata");
+            act3.Should().Throw<ArgumentException>().WithMessage("Pre-release version must not contain '-' or '+'.*").And.ParamName.Should().Be("preRelease");
+            act4.Should().Throw<ArgumentException>().WithMessage("Build metadata must not contain '-' or '+'.*").And.ParamName.Should().Be("buildMetadata");
+#pragma warning restore CA1806 // Do not ignore method results
+        }
     }
 }

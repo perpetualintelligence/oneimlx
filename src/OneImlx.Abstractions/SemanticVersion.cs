@@ -14,7 +14,7 @@ namespace OneImlx.Abstractions
     /// Versions are parsed and formatted using a canonical string representation. This implementation performs
     /// basic structural validation only and does not strictly enforce all SemVer 2.0.0 rules (e.g., identifier grammar,
     /// numeric leading-zero rules, or precedence ordering). Equality and hashing are value-based and case-insensitive
-    /// for pre-release and build metadata. For strict SemVer 2.0.0 adherence, implement a custom <see cref="ISemanticVersion"/> with full validation rules.
+    /// for pre-release and build metadata. For strict SemVer 2.0.0 adherence, implement a custom <see cref="IVersion"/> with full validation rules.
     /// </remarks>
     public sealed class SemanticVersion : IVersion, IEquatable<SemanticVersion>
     {
@@ -77,14 +77,6 @@ namespace OneImlx.Abstractions
             Minor = minor;
             Patch = patch;
             PreRelease = preRelease;
-        }
-
-        private void CheckVersions(int major, int minor, int patch)
-        {
-            if (major < 0 || minor < 0 || patch < 0)
-            {
-                throw new ArgumentOutOfRangeException("Version numbers must be non-negative.");
-            }
         }
 
         /// <summary>
@@ -247,6 +239,14 @@ namespace OneImlx.Abstractions
             if (buildMetadata != null && (buildMetadata.Contains("-") || buildMetadata.Contains("+")))
             {
                 throw new ArgumentException("Build metadata must not contain '-' or '+'.", nameof(buildMetadata));
+            }
+        }
+
+        private void CheckVersions(int major, int minor, int patch)
+        {
+            if (major < 0 || minor < 0 || patch < 0)
+            {
+                throw new ArgumentException("Version numbers must be non-negative.");
             }
         }
     }
