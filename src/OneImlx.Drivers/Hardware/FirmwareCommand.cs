@@ -1,25 +1,22 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
-
+using OneImlx.Abstractions;
 using System;
 using System.Collections.Generic;
-using OneImlx.Abstractions;
 
 namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
-    /// Represents a firmware command with a string command type.
+    /// Represents a firmware command.
     /// </summary>
     /// <remarks>Initializes a new instance of the <see cref="FirmwareCommand"/> class.</remarks>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
     /// <param name="description">The description.</param>
     /// <param name="command">The command.</param>
-    public class FirmwareCommand(string id, string name, string description, string command) : IId, IName, IDescription, IEquatable<FirmwareCommand>
+    public sealed class FirmwareCommand(string id, string name, string description, string command) : IId, IName, IDescription, IEquatable<FirmwareCommand>
     {
         /// <summary>
         /// Gets the command.
@@ -78,7 +75,7 @@ namespace OneImlx.Drivers.Hardware
         /// True if the specified <see cref="FirmwareCommand"/> is equal to the current <see cref="FirmwareCommand"/>;
         /// otherwise, false.
         /// </returns>
-        public bool Equals(FirmwareCommand other) => other != null && Id == other.Id;
+        public bool Equals(FirmwareCommand? other) => other is not null && Id == other.Id;
 
         /// <summary>
         /// Serves as the default hash function.

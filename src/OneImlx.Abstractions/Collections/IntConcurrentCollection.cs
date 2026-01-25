@@ -1,9 +1,6 @@
-﻿/*
-    Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 namespace OneImlx.Abstractions.Collections
 {
@@ -11,7 +8,7 @@ namespace OneImlx.Abstractions.Collections
     /// An indexed concurrent collection that can optionally limit the maximum items in the collection.
     /// </summary>
     /// <typeparam name="TType">The type of the items in the collection.</typeparam>
-    public sealed class IntConcurrentCollection<TType> : ConcurrentCollectionBase<int, TType>
+    public class IntConcurrentCollection<TType> : ConcurrentCollectionBase<int, TType>
     {
         /// <summary>
         /// Initializes a new instance with a specified maximum number of items.

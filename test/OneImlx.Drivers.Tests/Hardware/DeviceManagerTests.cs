@@ -16,7 +16,7 @@ namespace OneImlx.Drivers.Hardware
         [Fact]
         public void DeviceManager_Manages_Device()
         {
-            var manager = new DeviceManager();
+            var manager = new InstrumentManager();
             var mockDevice = new Mock<IDevice>();
             mockDevice.Setup(d => d.Id).Returns("test_id");
 

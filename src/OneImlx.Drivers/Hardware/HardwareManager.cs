@@ -1,9 +1,6 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -12,7 +9,7 @@ using System.Collections.Immutable;
 namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
-    /// Manages <see cref="IHardware"/> components concurrently.
+    /// Manages an unordered collection <see cref="IHardware"/>.
     /// </summary>
     /// <typeparam name="THardware">The type of hardware components to manage.</typeparam>
     public class HardwareManager<THardware> where THardware : IHardware
@@ -20,7 +17,7 @@ namespace OneImlx.Drivers.Hardware
         /// <summary>
         /// Initializes a new instance of the <see cref="HardwareManager{THardware}"/> class.
         /// </summary>
-        /// <remarks>
+        /// <remarks>m
         /// Uses <see cref="ConcurrentDictionary{TKey, TValue}"/> to ensure thread-safe operations for adding,
         /// retrieving, and removing hardware components.
         /// </remarks>

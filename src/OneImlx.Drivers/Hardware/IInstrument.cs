@@ -5,9 +5,9 @@
 namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
-    /// Manages an unordered collection of <see cref="IEquipment"/>.
+    /// An abstraction for an instrument hardware for measurement or control.
     /// </summary>
-    public sealed class EquipmentManager : HardwareManager<IEquipment>
+    public interface IInstrument : IHardware
     {
     }
 }

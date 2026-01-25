@@ -1,20 +1,13 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
-
-namespace OneImlx.Drivers.Hardware
+namespace OneImlx.Drivers
 {
     /// <summary>
-    /// An abstraction for hardware components.
+    /// An abstraction of a hardware.
     /// </summary>
     public interface IHardware : IDriven
     {
-        /// <summary>
-        /// Gets the manufacturer of the hardware component.
-        /// </summary>
-        string ManufacturerId { get; }
     }
 }

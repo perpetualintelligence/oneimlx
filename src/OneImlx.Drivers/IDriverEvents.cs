@@ -1,9 +1,6 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 using System.Threading.Tasks;
 
@@ -37,5 +34,11 @@ namespace OneImlx.Drivers
         /// </summary>
         /// <returns>A task that represents the asynchronous operation.</returns>
         Task OnRenderedAsync();
+
+        /// <summary>
+        /// Called when the driver is disposed.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        Task OnDisposedAsync();
     }
 }

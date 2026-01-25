@@ -1,9 +1,6 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
-
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
 using System.Threading.Tasks;
 
@@ -17,13 +14,12 @@ namespace OneImlx.Drivers
     /// <see cref="Declarative.DriverAttribute"/> to the driver class and <see cref="Declarative.DriverApiAttribute"/>
     /// on the individual APIs.
     /// </remarks>
-    public interface IDriverAction<TContext, TResult> where TContext : class where TResult : class
+    public interface IDriverAction<TContext> where TContext : class
     {
         /// <summary>
-        /// Executes the action with the specified context asynchronously.
+        /// Executes the action with  the specified context asynchronously.
         /// </summary>
         /// <param name="context">The context for the action.</param>
-        /// <returns>A task that represents the asynchronous operation, with a result of type <typeparamref name="TResult"/>.</returns>
-        Task<TResult> ExecuteAsync(TContext context);
+        Task ExecuteAsync(TContext context);
     }
 }
