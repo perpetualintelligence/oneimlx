@@ -16,7 +16,7 @@ namespace OneImlx.Drivers.Hardware
         [Fact]
         public void DeviceManager_Manages_Device()
         {
-            var manager = new InstrumentManager();
+            var manager = new DeviceManager();
             var mockDevice = new Mock<IDevice>();
             mockDevice.Setup(d => d.Id).Returns("test_id");
 
@@ -25,7 +25,7 @@ namespace OneImlx.Drivers.Hardware
             addResult.Should().BeTrue();
 
             // Verify the device is managed by DeviceManager
-            bool getResult = manager.TryGet(mockDevice.Object.Id, out IDevice? retrievedDevice);
+            bool getResult = manager.TryGetValue(mockDevice.Object.Id, out IDevice? retrievedDevice);
             getResult.Should().BeTrue();
             retrievedDevice.Should().BeSameAs(mockDevice.Object);
         }

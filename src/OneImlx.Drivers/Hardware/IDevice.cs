@@ -2,8 +2,6 @@
 //  For license, terms, and data policies, go to:
 //  https://terms.perpetualintelligence.com/articles/intro.html
 
-using System.Collections.Generic;
-
 namespace OneImlx.Drivers.Hardware
 {
     /// <summary>
@@ -11,9 +9,5 @@ namespace OneImlx.Drivers.Hardware
     /// </summary>
     public interface IDevice : IHardware
     {
-        /// <summary>
-        /// The device metadata.
-        /// </summary>
-        Dictionary<string, object>? Metadata { get; }
     }
 }

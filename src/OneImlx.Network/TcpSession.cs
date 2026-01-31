@@ -1,26 +1,21 @@
-﻿/*
-    Copyright © 2019-2024 Perpetual Intelligence L.L.C. All rights reserved.
+﻿//  Copyright © 2019-2026 Perpetual Intelligence L.L.C. All rights reserved.
+//  For license, terms, and data policies, go to:
+//  https://terms.perpetualintelligence.com/articles/intro.html
 
-    For license, terms, and data policies, go to:
-    https://terms.perpetualintelligence.com/articles/intro.html
-*/
-
+using OneImlx.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
-using OneImlx.Abstractions;
 
 namespace OneImlx.Network
 {
     /// <summary>
     /// Represents a TCP network session.
     /// </summary>
-    public class TcpSession<TData, TResult> : IStatefulSession<TData, TResult>
+    public class TcpSession<TData, TResult> : ISession
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TcpSession{TData, TResult}"/> class with hostname.

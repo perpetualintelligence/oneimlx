@@ -15,30 +15,30 @@ namespace OneImlx.Drivers
         /// Called when the driver connects to the driven entity.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation.</returns>
-        Task OnConnectedAsync();
+        Task OnConnectAsync();
 
         /// <summary>
         /// Called when the driver disconnects from the driven entity.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation.</returns>
-        Task OnDisconnectedAsync();
+        Task OnDisconnectAsync();
 
         /// <summary>
         /// Called when the driver is initialized.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation.</returns>
-        Task OnInitializedAsync();
+        Task OnInitializeAsync();
 
         /// <summary>
         /// Called when the driver starts rendering.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation.</returns>
-        Task OnRenderedAsync();
+        Task OnRenderAsync();
 
         /// <summary>
         /// Called when the driver is disposed.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation.</returns>
-        Task OnDisposedAsync();
+        Task OnDisposeAsync();
     }
 }
